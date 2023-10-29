@@ -1,0 +1,83 @@
+name: Build and deploy latex sources to GitHub Pages
+
+on: push
+
+jobs:
+  build:
+    # Базовая ОС, на которой будут исполняться команды. Оставим ubuntu
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Необходимо использовать этот action, чтобы получить содержимое репо
+
+      - uses: actions/checkout@v2
+
+      # Компилируем документ
+
+      - name: Build document
+
+        uses: dante-ev/latex-action@latest
+
+        with:
+          # Переименуйте, если у вас другой файл
+
+          root_file: questions.tex
+
+          # Аргументы, к которыми запускать компилятор (latexmk)
+
+          # -jobname=<name> дает возможность поменять имя выходного файла
+
+          args: -jobname=mathColloquium -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+
+          compiler: latexmk
+
+      # Загружаем собранные pdf-файлы
+
+      - name: Upload pdf document
+
+        uses: actions/upload-artifact@v2
+
+        with:
+          # Это значение используется как ключ в хранилище
+
+          name: mathColloquium
+
+          # Путь до собранного pdf. Может содержать «*», «**»
+
+          # Здесь это <working_directory>/<jobname>.pdf
+
+          path: mathColloquium.pdf
+  deploy:
+    runs-on: ubuntu-latest
+
+    # Можно зависеть от любого другого job. Порядок выполнения будет подстраиваться.
+
+    needs: [build]
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get current date
+        id: today
+        run: echo "::set-output name=today::$(date +'%Y-%m-%d-%dT%H:%M:%S')"
+      # Это хак, чтобы дергать bash-команды и запоминанать их результат
+      - name: Variables
+        id: vars
+        run: |
+          echo «::set-output name=date::$(date +'%Y-%m-%d')»
+          echo «::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)»
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: mathColloquium
+
+      - name: Create a Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: math colloquium ${{steps.date.outputs.today}}
+          tag_name: release
+          files: mathColloquium.pdf
+          prerelease: false
