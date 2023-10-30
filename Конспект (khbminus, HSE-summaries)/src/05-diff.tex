@@ -1,0 +1,779 @@
+\Subsection{Дифференцируемость и производная}
+\begin{definition}
+    $f\!:\langle a, b \rangle \to \R \land x_0 \in \langle a, b \rangle$.
+
+    $f$ --- дифференцируема в точке  $x_0$, если существует такое  $k \in \R\!: f(x) = f(x_0) + k(x-x_0) + o(x-x_0)$ при $x \to x_0$. Можно думать, что $\alpha(x) = o(x-x_0)$, где $\frac{\alpha(x)}{x - x_0} \xrightarrow{x \to x_0} 0$.
+\end{definition}
+\begin{definition}
+    Производная функции $f$ в точке  $x_0$ ---  $\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{h \to 0} \frac{f(x_0+h) - f(x_0)}{h} \eqqcolon f'(x)$.
+\end{definition}
+
+\begin{theorem}[Критерий дифференцируемости]
+    $f\!: \langle a, b \rangle \to \R, x_0 \in \langle a, b \rangle$. Следующие условия равносильны: 
+     \begin{enumerate}
+         \item $f$ дифференцируема в точке  $x_0$.
+         \item  $f$ имеет в точке  $x_0$ конечную производную.
+         \item $\exists \varphi\!: \langle a, b \rangle \to \R: f(x) - f(x_0) = \varphi(x)(x - x_0)$ и $\varphi$ непрерывна в точке  $x_0$.
+    \end{enumerate}
+    Причем, если выполнены эти условия, то $k = f'(x_0) = \varphi(x_0)$
+\end{theorem}
+\begin{proof}
+    \begin{itemize}
+        \item $1. \Rightarrow 2. f(x) = f(x_0) + k(x - x_0) + o(x - x_0) \Rightarrow \frac{f(x) - f(x_0)}{x - x_0} = \frac{k(x - x_0) + o(x - x_0)}{x-x_0} = k + o(1) \Rightarrow \lim_{x \to x_0}\frac{f(x) - f(x_0)}{x-x_0} = k \Rightarrow f'(x_0) = k$ 
+        \item $2. \Rightarrow 3.$  $\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x-x_0} = f'(x_0) \in \R$. $\varphi(x) = \begin{cases} \frac{f(x) - f(x_0)}{x - x_0} & x \neq x_0 \\ f'(x_0) & x = x_0 \end{cases} \Rightarrow \varphi$ --- непрерывна в $x_0$. 
+	\item  $3. \Rightarrow 1.$ $f(x) - f(x_0) = \varphi(x)(x - x_0)$, причем $\lim_{x \to x_0} \varphi(x) = \varphi(x_0) \Rightarrow f(x) = f(x_0) + \varphi(x_0)(x - x_0) + (\varphi(x) - \varphi(x_0))(x - x_0)$, где последний член есть $o(x - x_0)$ при $x \to x_0$.
+    \end{itemize}
+\end{proof}
+\begin{definition}
+    Бесконечная производная $\lim_{x\to x_0}\frac{f(x) - f(x_0)}{x - x_0} = \pm \infty$
+\end{definition}
+\begin{example}
+    $f(x) = \sqrt[3]{x}$.  $f'(0) = \lim_{h\to 0} \frac{f(h) - f(0)}{h - 0} = \lim_{h \to 0} \frac{\sqrt[3]{h}}{h} = \lim_{h \to 0} \frac{1}{\sqrt[3]{h^2}} = +\infty$
+\end{example}
+\begin{definition}
+    $f_+' \coloneqq \lim_{x\to x_0+} \frac{f(x)-f(x_0)}{x-x_0}$
+
+    $f_-' \coloneqq \lim_{x\to x_0-} \frac{f(x)-f(x_0)}{x-x_0}$
+\end{definition}
+\begin{remark}
+    Существование  $f'(x_0) \iff$ существование $f_{\pm}'(x_0)$ и их равенство.
+\end{remark}
+\begin{example}
+    $f(x) = |x|$.  $f_+'(x) = 1, f_-'(x)=-1$
+\end{example}
+\begin{definition}
+    Касательная --- предельное положение секущей.
+\end{definition}
+\begin{example}
+    Уравнение касательной. Пусть $f$ дифференцируема в точке  $u \in \langle a, b \rangle$.
+
+    $y = f(u) + \frac{f(v) - f(u)}{v - u}(x - u)$. $f'(u) = \lim_{v \to u}\frac{f(v) - f(u)}{v - u}$. То есть $y = f(u) + f'(u)(x-u)$.
+\end{example}
+
+Геометрический смысл $f'(x_0)$ --- угловой коэффициент к графику функции в точке $(x_0, f(x_0))$
+
+\begin{definition}
+	Дифференциал функции ($d_{x_0}f$) $f(x_0+h) = f(x_0) + k \cdot h + o(h)$ при  $h \to 0$.  $f(x_0)$ --- константа, $k \cdot h$ --- что-то линейное.
+    
+    Дифференциал функции ---  линейное отображение $k \cdot$.
+\end{definition}
+\begin{statement}
+    Если $f$ дифференцируема в  $x_0$, то  $f$ непрерывна в  $x_0$.
+\end{statement}
+\begin{proof}
+    $f(x) = f(x_0)+\underbrace{k(x-x_0)}_{\to 0}+\underbrace{o(x-x_0)}_{\to 0} \xrightarrow{x \to x_0} f(x_0)$
+\end{proof}
+
+\begin{theorem}[Арифметические действия с дифференцируемыми функциями]
+    $f, g\!: \langle a, b \rangle \to \R, x_0 \in \langle a, b \rangle, f, g$ --- дифференцируемые в  $x_0$. Тогда:
+     \begin{enumerate}
+         \item $f \pm g$ дифференцируема в  $x_0$ и $(f \pm g)' = f' \pm g'$
+         \item $f \cdot g$ дифференцируема в  $x_0$ и $(f \cdot g)' = f'g + fg'$
+         \item $cf$ дифференцируема в  $x_0$ и $(cf)' = cf'$
+         \item $\alpha f + \beta g$ дифференцируема в  $x_0$ и $(\alpha f + \beta g)' = \alpha f' + \beta g'$
+         \item если $g(x_0) \neq 0$, то  $\frac{f}{g}$ дифференцируема в $x_0$ и $\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}$
+    \end{enumerate}
+    \begin{proof}
+        \slashn
+        \begin{enumerate}
+            \item $(f+g)'(x_0) = \lim_{x \to x_0} \frac{(f(x) + g(x)) - (f(x_0) + g(x_0))}{x - x_0} = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} + \lim_{x \to x_0} \frac{g(x) - g(x_0)}{x - x_0} = f'(x_0) + g'(x_0)$ 
+	    \item $(fg)'(x_0) = \lim_{x \to x_0} \frac{f(x)g(x) - f(x_0)g(x_0)}{x - x_0} = \lim_{x \to x_0} \frac{f(x)g(x) - f(x)g(x_0) + f(x)g(x_0)-f(x_0)g(x_0)}{x - x_0} = \lim_{x \to x_0} f(x) \frac{g(x) - g(x_0)}{x - x_0} + \lim_{x \to x_0} g(x) \frac{f(x) - f(x_0)}{x - x_0} = fg' + f'g$
+            \item $(cf)' = cf' + c'f = cf'$
+            \item  $(\alpha f + \beta g)' = (\alpha f)' + (\beta g)' = \alpha f' + \beta g'$
+            \item $\left(\frac{f}{g}\right)' = (f' \cdot \frac{1}{g}) + f \cdot (\frac{1}{g})'$.
+
+                $(\frac{1}{g})'(x_0) = \lim_{x \to x_0} \frac{\frac{1}{g(x)} - \frac{1}{g(x_0)}}{x - x_0} = \lim_{x\to x_0} \frac{1}{g(x_0)g(x_0)}\frac{g(x_0) - g(x)}{x - x_0} = -\frac{g'(x_0)}{g(x_0)^2}$.
+        \end{enumerate}
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}[Дифференцируемость композиции]
+    Пусть $f\!: \langle a, b \rangle \to \R,\ g\!:\langle c, d \rangle \to \langle a, b \rangle$,  $x_0 \in \langle c, d \rangle$, $g$ дифференцируема в точке  $x_0$, $f$ дифференцируема в точке $g(x_0)$. 
+
+    Тогда $f\circ g$ дифференцируема в точке $x_0$, и $(f \circ g)'(x_0) = f'(g(x_0))g'(x_0)$. 
+\end{theorem}
+\begin{proof}
+    $g$ дифференцируема в точке  $x_0 \Rightarrow g(x) - g(x_0) = \psi(x)(x - x_0)$, где $\psi$ --- непрерывна в точке  $x_0$. $f$ дифференцируема в точке  $y_0 = g(x_0) \Rightarrow f(y) - f(y_0) = \varphi(y)(y-y_0)$, где $\varphi$ непрерывна в точке  $y_0$.
+
+    Поставим $y=g(x)$, получим $f(g(x)) - f(g(x_0)) = \varphi(g(x))(g(x) - g(x_0) = \underbrace{\varphi(g(x))}_{\mathclap{\text{непрерывна в точке } x_0 \text{ как композиция}}}\psi(x)(x-x_0) \Rightarrow f \circ g$ дифференцируема в точке $x_0$ и $(f\circ g)'(x_0) = \varphi(g(x_0))\psi(x_0) = f'(g(x_0)) g'(x_0)$
+\end{proof}
+\begin{theorem}[дифференцируемость обратной функции]
+    Пусть $f\!:\langle a, b \rangle \to \R$, строго монотонна, непрерывна, $x_0 \in \langle a, b \rangle$, $f$ дифференцируема в точке $x_0$ и $f'(x_0) \neq 0$.
+
+    Тогда $f^{-1}$ дифференцируема в точке $y_0 = f(x_0)$ и $(f^{-1})' = \frac{1}{f'(x_0)}$.
+\end{theorem}
+\begin{proof}
+    $f$ дифференцируема в $x_0 \Rightarrow f(x) - f(x_0) = \varphi(x)(x - x_0)$, где $\varphi$ --- непрерывна в точке  $x_0$. 
+    Пусть $y = f(x)$. Тогда предыдущее равенство можно написать как  $y - y_0 = \varphi(f^{-1}(y))(f^{-1}(y) - f^{-1}(y_0))$.
+
+    $\varphi(f^{-1}(y))$ непрерывна в точке $y_0$ как композиция непрерывных и $\varphi(f^{-1}(y_0)) = \varphi(x_0) = f'(x_0) \neq 0$. Тогда $\varphi(x) \neq 0$ в окрестности  $x_0$ и  $f^{-1}(y) - f^{-1}(y_0) = \frac{1}{\varphi(f^{-1}(y))}(y - y_0)$ 
+
+    $(f^{-1})'(y_0) = \frac{1}{\varphi(f^{-1}(y_0))} = \frac{1}{\varphi(x_0)} = \frac{1}{f'(x_0)}$
+\end{proof}
+\begin{consequence}
+	$(f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))}$
+\end{consequence}
+\slashn
+\Subsection{Таблица производных}
+\begin{enumerate}
+    \item $c' = 0$
+    \item  $(x^p)' = p x^{p-1}, p \in \R, x > 0$
+    \item $(a^x)' = a^x \ln a, a > 0$
+
+        $(e^x)' = e^x$
+    \item  $(\log_a x)' = \frac{1}{x \ln a}, a > 0, a \neq 1$ 
+
+        $(\ln x)' = \frac{1}{x}$ 
+    \item $(\sin x)' = \cos x$
+    \item  $(\cos x)' = -\sin x$
+    \item  $(\tg x)' = \frac{1}{\cos^2 x}$
+    \item $(\ctg x)' = -\frac{1}{\sin^2 x}$
+    \item $(\arcsin x)' = \frac{1}{\sqrt{1-x^2}}$ 
+    \item $(\arccos x)' = -\frac{1}{\sqrt{1-x^2}}$ 
+    \item $(\arctg x)' = \frac{1}{1 + x^2}$ 
+    \item $(\arcctg x)' = -\frac{1}{1+x^2}$
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}
+        \item Очевидно.
+        \item $(x^p)' = \lim_{h \to 0} \frac{(x + h)^p - x^p}{h} = x^p \lim_{h \to 0} \frac{(1 + \frac{h}{x})^p - 1}{\frac{h}{x}} \frac{1}{x} = x^p \frac{p}{x} = px^{p - 1}$.
+        \item $(a^x)' = \lim_{h \to 0} \frac{a^{x+h} - a^x}{h} = a^x \lim_{h \to 0} \frac{a^h - 1}{h} = a^x \ln a$
+        \item $\log_a x$ --- обратная к  $a^x$ функция  $f(x) = a^x$, тогда  $(\log_a y)' = \frac{1}{f'(f^{-1}(y))} = \frac{1}{a^{f^{-1}(y)} \ln a} = \frac{1}{y \ln a}$
+	\item $(\sin x)' = \lim_{h \to 0} \frac{\sin(x+h) - \sin x}{h} = \lim_{h \to 0} \frac{\sin x \cos h + \sin h \cos x - \sin x}{h} = \sin x \lim_{h\to 0}\frac{\cos h - 1}h + \cos x \lim_{h \to 0} \frac{\sin h}{h} = \cos x \cdot 1 + \sin x \cdot 0$ 
+        \item Тоже самое.
+        \item $(\tg x)' = (\frac{\sin x}{\cos x})' = \frac{(\sin x)' \cos x - (\cos x)' \sin x}{\cos^2 x} = \frac{\cos x \cos x - (-\sin x) \sin x}{\cos ^2 x} = \frac{1}{\cos^2 x}$
+        \item Тоже самое.
+        \item $f(x) = \sin x$.  $\arcsin' (y) = (f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))} = \frac{1}{f'(\arcsin y)} = \frac{1}{\cos(\arcsin y)} = \frac{1}{\sqrt{1 - \sin^2(\arcsin y)}} = \frac{1}{\sqrt{1 - y^2}}$.
+        \item $\arccos x = \frac{\pi}{2} - \arcsin x$.
+        \item $f(x) = \tg x$,  $\arctg\!: \R \to (-\frac{\pi}{2}; \frac{pi}{2})$.
+
+            $(\arctg)'(y) = (f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))} = \frac{1}{f'(\arctg y)} = \frac{1}{\frac{1}{\cos^2(\arctg y)}} = \cos^2(\arctg y) = \frac{1}{1+\tg^2(\arctg y)} = \frac{1}{1+y^2}$, так как  $\frac{1}{\cos^2 x} = 1 + \tg^2 \Rightarrow \cos^2 x = \frac{1}{1 + \tg^2 x}$
+    \end{enumerate}
+\end{proof}
+\Subsection{Теоремы о среднем}
+\begin{theorem}[Теорема Ферма]
+    $f\!: \langle a, b \rangle \to \R$,  $x_0 \in (a, b), f$ --- дифференцируема в  точке $x_0$.
+
+    $f(x_0) = \max_{x \in \langle a, b \rangle}f(x) \lor f(x_0) = \min_{x \in \langle a, b \rangle}f(x) \Rightarrow f'(x_0) = 0$
+\end{theorem}
+\begin{proof}
+    Пусть $f(x_0) = \max_{x \in \langle a, b \rangle}f(x)$. Тогда  $f'(x_0) = f_+'(x_0) = \lim_{x \to x_0+} \frac{\overbrace{f(x) - f(x_0)}^{\mathclap{\le 0}}}{\underbrace{x - x_0}_{\mathclap{> 0}}} \le 0$. 
+
+    Посмотрим на $f'(x_0) = f_-'(x_0) = \lim_{x \to x_0-}\frac{\overbrace{f(x) - f(x_0)}^{\mathclap{\le 0}}}{\underbrace{x - x_0}_{\mathclap{< 0}}} \ge 0$.
+    
+    Значит, что $f'(x_0) \le 0$ и $f'(x_0) \ge 0 \Rightarrow f'(x_0) = 0$. 
+\end{proof}
+\begin{example}
+    У $f(x) = x$ на отрезке  $[0, 1]$ максимум в 1, минимум в 0, но производная на концах 1. Поэтому важно, чтобы $x_0$ принадлежало интервалу.
+\end{example}
+\begin{theorem}[Теорема Ролля]
+	$f\!: [a, b] \to \R$ непрерывна во всех точках и дифференцируема на $(a, b)$. Если  $f(a) = f(b)$, то $\exists\, c \in (a, b): f'(c) = 0$ 
+\end{theorem}
+\begin{proof}
+    $f$ непрерывна  на $[a, b] \xRightarrow[\text{Вейерштрасса}]{\text{теорема}} f$ достигает наибольшего и наименьшего значения. 
+
+    Пусть $f(p) = \min, f(q) = \max$. Если  $p$ и  $q$ --- концы отрезка, то  $\max = \min \Rightarrow f = \text{const} \Rightarrow f' = 0$ во всех точках. 
+
+    А если же одна из этих точек не является концом отрезка, то по теорема Ферма  $f'$ в этой точке равна 0.
+\end{proof}
+\begin{remark}
+    Геометрический смысл теоремы Ферма: в точках $\min$,  $\max$ касательная горизонтальна.
+
+    Геометрический смысл теоремы Ролля: если значения на концах равны, то можно провести горизонтальную касательную
+\end{remark}
+\begin{theorem}[Лагранжа, Формула конечных приращений]
+    $f\!: [a, b] \to \R$ непрерывна на  $[a, b]$, дифференцируема на  $(a, b)$. Тогда $\exists c \in (a, b)\!: f(b) - f(a) = f'(c)(b-a)$
+\end{theorem}
+\begin{proof}
+    $g(x) = f(x) - kx$. Подберем  $k$ так, что  $g(a) = g(b)$.  $f(a) - ka = g(a) = g(b) = f(b) - kb \Rightarrow k = \frac{f(b) - f(a)}{b - a}$.
+
+    Применим теорему Ролля к функции $g(x)$. $\exists c \in (a, b)\!: g'(c) = 0 \iff 0 = g'(c) = f'(c) - \frac{f(b) - f(a)}{b - a}$ и умножим на $b-a$.
+\end{proof}
+\begin{remark}
+    $\frac{f(b) - f(a)}{b - a}$ --- угловой коэффициент секущей, $f'(c)$ --- угловой коэффициент касательной в точке  $c$. В некоторой точке касательная параллельная секущей. 
+\end{remark}
+\begin{theorem}[Теорема Коши]
+    $f, g\!:[a, b] \to \R$ непрерывны на  $[a, b]$, дифференцируемы на  $(a, b)$,  $g'(x) \neq 0\ \forall x\in(a, b)$. Тогда $\exists c \in (a, b)\!: \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}$
+\end{theorem}
+\begin{proof}
+    $h(x) \coloneqq f(x) - kg(x)$. Подберем $k$ так, что  $h(a) = h(b)$.
+
+    $f(a) - kg(a) = h(a) = h(b) = f(b) - kg(b) \Rightarrow k = \frac{f(b) - f(a)}{g(b) - g(a)}$ (по Роллю у нас $g'(x) \neq 0$, а значит в концах значения точно не равны).
+
+    по т. Ролля для $h$ найдем  $c \in (a, b)\!: h'(c) = 0$. Тогда  $h'(c) = f'(c) - kg'(c) \Rightarrow k = \frac{f'(c)}{g'(c)}$.
+\end{proof}
+\begin{remark}
+	Геометрический смысл. Пусть у нас есть кривая, заданная параметрически: обе координаты от параметра. $(g(t), f(t))$ координаты точки в момент времени $t$. Тогда  $k$ --- угловой коэффициент секущей. $(f'(t), g'(t))$ --- вектор скорости в момент времени $t$. Тогда $\frac{f'(t)}{g'(t)}$ --- угловой коэффициент касательной. Иначе говоря, если у нас есть кривая, соединяющая точки $A$ и $B$, заданная параметрически, то существует точка на этой кривой в которой касательная к кривой параллельна секущей --- прямой, соединяющей точки $A$ и $B$.
+\end{remark}
+\begin{definition}
+    $f\!:E\to \R$ --- Липшицева функция с константой $M$, если  $\forall x, y \in E\!: |f(x) - f(y)| \le M|x-y|$.
+\end{definition}
+\begin{consequence}[Следствия теоремы Лагранжа]
+    \slashn
+    \begin{enumerate}
+        \item $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$ и  $|f'(x)| \le M\ \forall x \in (a, b)$. 
+
+            Тогда $|f(x) - f(y)| \le M|x-y|\ \forall x, y \in \langle a, b \rangle$ 
+        \item  $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$. Если $f'(x) = 0\ \forall x \in (a, b) \Rightarrow f = \text{const}$. 
+        \item  $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$, $f'(x) > 0\ \forall x \in (a, b) \Rightarrow f$ строго возрастает.
+        \item  $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$, $f'(x) \ge 0\ \forall x \in (a, b) \Rightarrow f$ нестрого возрастает.
+        \item  $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$, $f'(x) < 0\ \forall x \in (a, b) \Rightarrow f$ строго убывает.
+        \item  $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$, дифференцируема на $(a, b)$, $f'(x) \le 0\ \forall x \in (a, b) \Rightarrow f$ нестрого убывает.
+    \end{enumerate}
+\end{consequence}
+\begin{proof}
+\slashn
+    \begin{enumerate}
+        \item $[x, y] \subset \langle a, b \rangle$. Применим теорему Лагранжа к  $[x, y]$. Тогда  $\exists c \in (x, y) \subset (a, b)\!: f(y)-f(x) = f'(c)(y-x) \Rightarrow |f(y) - f(x)| = |f'(c)| \cdot |y-x| \le M|y-x|$ 
+        \item Аналогично: $f(y)-f(x) = f'(c)(y - x) = 0$,  $y - x \neq 0$. 
+        \item Напишем Лагранжа для $[x, y] \subset \langle a, b \rangle, (x, y) \subset (a, b)$. 
+            Тогда  $\exists c \in (a, b)\!: f(y) - f(x) = f'(c)(y-x)$, что  $>0 \iff f(y) >f(x).$
+        \item Аналогично.
+        \item Аналогично.
+        \item Аналогично.
+    \end{enumerate}
+\end{proof}
+\begin{theorem}[Теорема Дарбу]
+    $f\!:[a, b] \to \R$ дифференцируема во всех точках. Пусть  $C$ лежит между  $f'(a)$ и  $f'(b)$. Тогда найдется  $c \in (a, b)$, такая что  $f'(c) = C$.
+\end{theorem}
+\begin{proof}
+    Пусть $f'(a) < 0 < f'(b)$. Покажем, что $\exists c \in (a, b)\!: f'(c) = 0$, $f$ непрерывна на  $[a, b]$. По теореме Вейерштрасса  $f$ достигает  $\min$. Пусть минимум достигается в точке $c$. Покажем, что  $c \neq a$ и  $c \neq b$. 
+
+    От противного: пусть $f(a) = \min$. Тогда  $f'(a) = f_+'(a) = \lim \frac{f(x)- f(a)}{x-a}$. Заметим, что числитель  $\ge 0$ и знаменатель $> 0$, тогда по предельному переходу предел  $\ge 0$. Противоречие.
+
+    Пусть $f(b) = \min$. Тогда  $f'(b) = f_-'(b) = \lim_{x \to b-} \frac{f(x) - f(b)}{x - b}$. Заметим, что  числитель  $\ge 0$, а знаменатель $<0$. Противоречие.
+    
+    Следовательно,  $c \in (a, b)$. Тогда по теореме Ферма  $f'(c) = 0$. 
+
+    Перейдём к общему случаю. Введём $g(x) \coloneqq f(x) - C \cdot x$.  $g'(x) = f'(x) - C \Rightarrow g'(a)$ и  $g'(b)$ разных знаков, следовательно  $\exists c \in (a, b)\!: g'(c) = f'(c) - C = 0 \Rightarrow f'(c) = C$.
+\end{proof}
+\begin{consequence}
+    $f\!: \langle a, b \rangle \to \R$, дифференцируема на  $\langle a, b \rangle, f'(x) \neq 0\ \forall x \in \langle a, b \rangle $. Тогда  $f$ строго монотонна.
+\end{consequence}
+\begin{proof}
+    Очев. 
+\end{proof}
+\begin{theorem}[Правило Лопиталя]
+	$-\infty \le a < b \le +\infty$, $f,g$ дифференцируемы на  $(a, b)$.  $g'(x) \neq 0\ \forall x \in (a, b)$ и $\lim_{x \to a+} f(x) = \lim_{x \to a+} g(x) = 0$. 
+
+    $\lim_{x \to a+} \frac{f'(x)}{g'(x)} = l \in \overline{R} \Rightarrow \lim_{x \to a+} \frac{f(x)}{g(x)} = l$. 
+\end{theorem}
+\begin{proof}
+    Проверяем по Гейне. Возьмем $x_n \to a$, причем убывающую.  $\frac{f(x_n)}{g(x_n)} \xrightarrow{?} l$. Посчитаем $\lim_{n \to \infty} \frac{f(x_{n+1}) - f(x_n)}{g(x_{n+1}) - g(x_n)} = \lim_{n \to +\infty} \frac{f'(c_n)}{g'(c_n)}$, где $c_n \in (x_{n+1}, x_n)$. Последовательность  $c_n$ стремится  к $a$ справа. Тогда по Штольцу $\lim \frac{f(x_n)}{g(x_n)} = l$. Надо было проверить, что $g(x_n)$ строго монотонна. Это из последнего следствия и монотонности $x_n$.
+\end{proof}
+\begin{theorem}[Второе правило Лопиталя]
+    $-\infty \le a < b \le +\infty$. $f, g$ дифференцируемы на  $(a, b)$.  $\forall x\in (a, b)\!: g'(x) \neq 0, \lim_{x \to a+}g(x) = +\infty$.  $\lim_{x \to a+} \frac{f'(x)}{g'(x)} =l \in \overline{R} \Rightarrow \lim_{x \to a+} \frac{f(x)}{g(x)} = l$
+\end{theorem}
+\begin{example}
+    $\lim_{x \to +\infty} \frac{\ln x}{x^p} = 0$ при $p > 0$.
+
+    Подставляем в Лопиталя  $f(x) = \ln x, g(x) = x^p$,  $f'(x) = \frac{1}{x}$, $g'(x) = px^{p - 1}$.  $\lim_{x \to + \infty}\frac{f'(x)}{g'(x)} = \lim_{x \to +\infty} \frac{\frac{1}{x}}{px^{p-1}} = \lim_{x \to +\infty} \frac{1}{p} \frac{1}{x^p} = 0$
+\end{example}
+\begin{example}
+    $\lim_{x \to +\infty} \frac{x^p}{a^x} = a^x$. $f'(x) = px^{-1}, g'(x) = a^x \ln a$.
+
+    $\lim_{x \to +\infty} \frac{f'(x)}{g'(x)} = \lim_{x \to +\infty} \frac{px^{p-1}}{a^x \ln a} =  \frac{p}{\ln a} \lim_{x \to +\infty} \frac{x^{p-1}}{a^x} = 0$, при $p \le 1$.
+\end{example}
+\begin{example}
+    $\lim_{x \to 0+} x^x = \lim_{x \to 0+} e^{x \ln x} = e^{\lim_{x \to 0+} x \ln x} = e^0 = 1$.
+    
+    $\ln x^x = x \ln x, \lim_{x \to 0+} x \ln x = \lim_{x \to +} \frac{\ln x}{\frac{1}{x}} = \lim_{x \to 0+} \frac{(\ln x)'}{(\frac{1}{x})'} = \lim_{x \to 0+} \frac{\frac{1}{x}}{-\frac{1}{x^2}} = \lim_{x \to 0+}(-x) = 0$
+\end{example}
+\Subsection{Производные высших порядков}
+\begin{definition}
+    $f: \langle a, b \rangle \to \R$,  $x_0 \in \langle a, b \rangle$, $f$ -- дифференцируема в окрестности  $x_0$.
+    И если $f'$ дифференцируема в $x_0$, то $f$ дважды дифференцируема в $x_0$.
+
+    То есть $f''(x_0) \coloneqq (f'(x))'\mid_{x=x_0}$
+\end{definition}
+\begin{definition}
+    $f$ дважды дифференцируема в окрестности $x_0$. Если $f''$ дифференцируема в точке  $x_0$, то $f$ трижды дифференцируема в точке  $x_0$. 
+\end{definition}
+\begin{definition}
+    $f \in C(E) \iff f: E \to \R$ и непрерывна во всех точках.
+\end{definition}
+\begin{definition}
+    $f \in C^1(\langle a, b \rangle)$  $f\!: \langle a, b \rangle \to \R$, дифференцируема во всех точках и  $f'$ непрерывна.
+
+    Будем называть такое свойство <<непрерывной дифференцируемостью>>.
+\end{definition}
+\begin{definition}
+    $f \in C^n(\langle a, b \rangle)$. $f\!: \langle a, b \rangle \to \R$  $n$ раз дифференцируема и  $f^{(n)}$ непрерывна.
+\end{definition}
+\begin{definition}
+    $f \in C^{\infty}(\langle a, b \rangle)$ означает, что  $f \in C^n(\langle a, b \rangle)\ \forall n \in \N$.
+\end{definition}
+\begin{remark}
+    $C^n(\langle a, b \rangle) \supsetneqq C^{n+1}(\langle a, b \rangle) \supset C^{\infty}(\langle a, b \rangle)$
+\end{remark}
+\begin{example}
+    $f_n(x) \coloneqq x^{n + \frac{1}{3}}$. Покажем, что $f_n \in C^n(\R), f_n \notin C^{n+1}(\R)$.
+
+    Тогда  $f^{(n)}(x) = (n+\frac{1}{3}(n-\frac{2}{3})\ldots \frac{4}{3}) \eqqcolon cx^{\frac{1}{3}}$. Заметим, что $f^{(n+1)}$ в пределе равна  $\frac{1}{\sqrt[3]{x}}$, что в пределе бесконечность.
+\end{example}
+
+\begin{theorem}[Арифметические действия с $n$-ми производными]
+    $f, g\!: \langle a, b \rangle \to \R, x_0 \in \langle a, b \rangle$, $f, g$  $n$ раз дифференцируема в  $x_0$. Тогда:
+    \begin{enumerate} 
+        \item $\alpha f + \beta g$  $n$ раз дифференцируема в точке $x_0$ и $(\alpha f + \beta g)^{(n)} = \alpha f^{(n)} + \beta g^{(n)}$
+        \item  $f\cdot g\ $ дифференцируема в точке $n$  раз и  $(fg)^{(n)} = \sum_{k=0}^n \binom{n}{k}f^{(k)}g^{(n - k)}$.
+        \item $f(\alpha x + \beta)^{(n)} = \alpha^n f^{(n)}(\alpha x + \beta)$ 
+        \item (Композиция: формула Фаа-Ди Бруно)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item Индукция по $n$.
+        \item Индукция по  $n$. База  $n=1$.  $(fg)' = f'g+ fg'$.
+
+            Переход  $n \to n + 1$.  $(fg)^{(n+1)} = ((fg)^{(n)})' = (\sum_{k=0}^n \binom{n}{k}(f^{(k)}g^{(n-k)})' = \sum_{k=0}^n \binom{n}{k}(f^{(k + 1)}g^{(n - k)} + f^{(k)}g^{(n - k +1)}) = \sum_{k=0}^{n} \binom{n}{k}f^{(k+1)}g^{(n - k)} + \sum_{k = 0}^{n}\binom{n}{k} f^{(k)}g^{(n - k + 1)} = \sum_{k=0}^{n+1}\binom{n+1}{k}f^{(k)}g^{(n - k + 1)}$.
+
+            Последний переход обусловлен заменой $j = k + 1$ в левой скобке, после чего получается  $\sum_{k=0}^{n + 1} \left(\binom{n}{k} + \binom{n}{k - 1}\right) f^{(k)}g^{(n-k+1)}$
+        \item Индукция по  $n$. Очев.
+    \end{enumerate}
+\end{proof}
+\begin{example}
+    \begin{enumerate}
+        \item $(x^p)^{(n)} = p(p-1)(p-2)\ldots(p-n+1)x^{p-n}$
+        \item $(\frac{1}{x})^{(n)} = (-1)(-2)\ldots(-n)x^{-1-n} = \frac{(-1)^n n!}{x^{n+1}}$
+        \item $(\ln x)^{(n)} = ((\ln x)')^{(n-1)} = (\frac{1}{x})^{(n-1)} = \frac{(-1)^{n-1} (n-1)!}{x^{n}}$
+        \item $a^x = ((a^x)')^{(n-1)} = (\ln a a^x)^{(n-1)} = \ldots = (\ln a)^n a^x$
+
+            $(e^x)^{(n)} = e^x$
+        \item  $(\sin x)^{(n)} = \sin(x + \frac{\pi n}{2})$
+
+            $(\sin x)^{(n)} = ((\sin x)^{(n-1)})' = (\sin(x + \frac{\pi n}{2}))' = \sin(x + \frac{\pi (n-1)}{2} + \frac{\pi}{2}) = \sin (x + \frac{\pi n}{2})$
+        \item  $(\cos x)^{(n)} = \cos(x + \frac{\pi n}{2})$
+    \end{enumerate}
+\end{example}
+\begin{theorem}[формула Тейлора для многочленов]
+    $T$ --- многочлен степени  $n$. Тогда  $T(x) = \sum_{k=0}^n \frac{T^{(n)}(x_0)}{k!}(x - x_0)^k$
+\end{theorem}
+\begin{lemma}
+    $f(x) = (x-x_0)^k \Rightarrow f^{m}(x_0) = \begin{cases} k! = m! & \text{если, }k=m \\ 0 & \text{иначе} \end{cases}$
+\end{lemma}
+\begin{proof}[Доказательство леммы]
+    $f^{(m)}(x) = k(k-1)\ldots(k - m + 1)(x-x_0)^{k-m}$.
+
+    Если $k > m$, то  $f^{(m)}(x_0) = 0$
+
+    Если $k = m$, то  $f^{(m)}(x_0) = k(k-1)\ldots 1 = k!$
+
+    Если $k < m$, то  $f^{(k)}(x) \equiv k!$ и  $f^{(k + 1)}(x) \equiv 0$
+\end{proof}
+\begin{proof}[Доказательство теоремы]
+    Напишем разложение $T(x) = \sum_{k=0}^n c_k(x-x_0)^k$. (Пояснение: $T(x) = \sum_{k=0}^n a_k x^k = \sum_{k=0}^n a_k(x_0 + (x-x_0))^k$ и раскроем скобки).
+
+    Поймем, что $c_k = \frac{T^{(k)}(x_0)}{k!}$. Заметим, что $T^{(n)}(x_0) = \sum_{k=0}^{n} (c_k(x-x_0)^k)^{(m)} \mid_{x=x_0} = m!$.
+
+    То есть, у нас в $i$-ой производной остается только  $i$-ый коэффициент, домноженный на $i!$ 
+\end{proof}
+\begin{definition}
+    Пусть $f$  $n$ раз дифференцируема в точке  $x_0$. Многочлен Тейлора степени $n$  $T_{n, x_0} f(x) \coloneqq \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k$.
+
+    $R_{n, x_0}f(x) \coloneqq f(x) - T_{n, x_0}f(x)$
+\end{definition}
+
+\begin{lemma}
+    Пусть $g$ $n$ раз дифференцируема в точке $x_0$ и $g(x_0) = g'(x_0) = \ldots = g^{(n)}(x_0) = 0$.
+
+    Тогда $g(x) = o((x-x_0)^n)$ при $x \to x_0$.
+\end{lemma}
+\begin{proof}
+    $\lim_{x \to x_0} \frac{g(x)}{(x-x_0)^n} \stackrel{\text{Лопиталь}}{=} \lim_{x \to x_0}\frac{g'(x)}{n(x-x_0)^{n-1}} = \frac{g''(x)}{n(n-1)(x-x_0)^{n-2}} = \ldots = \lim_{x \to x_0}\frac{g^{(n-1)}(x)}{n! (x-x_0)} = 0$ 
+
+    $g^{(n-1)}$ --- дифференцируема в  $x_0 \Rightarrow g^{(n-1)}(x)= g^{(n-1)}(x_0)+g^{(n)}(x_0)(x - x_0) + o(x-x_0) = o(x-x_0)$ 
+\end{proof}
+\begin{theorem}[Формула Тейлора с остатком в форме Пеано]
+    Пусть $f$  $n$ раз дифференцируема в точке  $x_0$. Тогда $f(x) = T_{n, x_0}f(x) + o((x-x_0)^n) = \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k + o((x-x_0)^n)$.
+\end{theorem}
+\begin{proof}
+	$g(x) \coloneqq f(x) - T_{n,x_0}f(x)$. $g^{(m)}(x_0) = f^{(m)}(x_0) - (T_{n,x_0} f)^{(m)}(x_0) = f^{(m)}(x_0) - f^{(m)}(x_0)$, смотри теорему выше про Тейлора для многочлена.
+
+    Таким образом, $g(x_0) = g'(x_0) = \ldots = g^{n}(x_0) = 0$.
+
+    По лемме $g(x) = o((x-x_0)^n) \Rightarrow f(x) - T_{n, x_0}f(x) = o((x - x_0)^n)$.
+\end{proof}
+\begin{consequence}[Единственность]
+    $f$  $n$ раз дифференцируема в точке  $x_0$ и $f(x) = P(x) + o((x-x_0)^n)$ при $x\to x_0$, где $P$ --- многочлен степени $\le n$. Тогда $P(x) = T_{n,x_0}f(x)$ 
+\end{consequence}
+\begin{proof}
+	$Q(x) \coloneqq P(x) - T_{n, x_0}f(x) = o((x-x_0)^n)$ при $x \to x_0$ (просто вычитаем два равенства на $f(x) = P(x) + o((x-x_0)^n) = T_{n, x_0}f(x) + o((x_0)^n)$)
+
+    $Q(x) = \sum_{k=0}^n a_k(x-x_0)^k$ пусть $a_m \neq 0$ --- ненулевой коэффициент с наименьшим индексом  $\Rightarrow \frac{Q(x)}{(x-x_0)^m} = a_m + \sum_{k=m+1}^n a_k(x-x_0)^{k-m}$. Левая часть стремится к нулю, справа второе слагаемое стремится к 0. Но значит и $a_m$ должно быть нулю.
+\end{proof}
+\begin{theorem}[Формула Тейлора с остатком в форме Лагранжа]
+    $f\!: \langle a, b \rangle \to \R$,  $x_0 \in \langle a, b \rangle$, $f$  $(n+1)$ раз дифференцируема на  $\langle a, b \rangle$. Тогда  $\exists c$ между  $x$ и  $x_0$, такой что  $f(x) = T_{n, x_0}f(x) + \frac{f^{n+1}(c)}{(n+1)!}(x-x_0)^{n+1} = \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k + \frac{f^{(n+1)}(c)}{(n+1)!}(x-x_0)^{n+1}$
+\end{theorem}
+\begin{proof}
+    Зафиксируем $x$ и возьмем  $M \in \R$, такой что  $f(x) = T_{n, x_0}f(x) + M(x-x_0)^{n-1}$. Рассмотрим $g(t) \coloneqq f(t) - T_{n, x_0}f(t) - M(t-x_0)^{n+1}$
+
+    $g^{(n+1)}(t) = f^{(n+1)}(t) - M(n+1)!$, то есть надо доказать, что  $g^{(n+1)}(c) = 0$, в некоторой точке между  $x$ и  $x_0$. Знаем, что $g(x) = 0$, $g(x_0) = g'(x_0) = \ldots = g^{(n)}(x_0) = 0$.
+    $g(x) = g(x_0) = 0 \xRightarrow{\text{Ролль}} \exists x_1$ между $x$ и  $x_0$, такая что $g'(x_1) = 0$.
+
+    $g'(x_1) = g'(x_0) =0 \xRightarrow{\text{Ролль}} \exists x_2$ между $x_0$ и  $x_1$, такая что $g''(x_2) = 0$.
+
+    И так далее до $g^{(n)}(x_n) = g^{(n)}(x_0) = 0 \xRightarrow{\text{Ролль}} \exists c$ между $x$ и  $x_0$, такая что $g^{(n+1)}(c) = 0$
+\end{proof}
+\begin{consequence}
+    Если  $|f^{(n+1)}(t)| \ge M\ \forall t \in (x_0, x)$, то $|R_{n, x_0}f(x)| \le \frac{M(x-x_0)^{n+1}}{(n+1)!} = \mathcal{O}((x-x_0)^{n+1})$.
+\end{consequence}
+\begin{consequence}
+    Если $|f^{(n)}(t)| \le M\ \forall n\ \forall t \in (a, b)$, то $T_{n, x_0}f(x) \xrightarrow{n \to \infty} f(x)$
+\end{consequence}
+\begin{proof}
+    $|f(x) - T_{n, x_0}f(x)| = |\frac{f^{n+1}(c)}{(n+1)!} (x-x_0)^{n+1}| \le M \frac{(x-x_0)^{n+1}}{(n+1)!} \to 0$. Так как $x - x_0 = h, M \cdot \frac{h^{n+1}}{(n+1)!} \to 0$.
+\end{proof}
+
+\textbf{Формулы Тейлора для элементарных функций. Везде $x_0=0$}.
+\begin{itemize}
+    \item $e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots + \frac{x^n}{n!} + o(x^n)$
+    \item $\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \ldots + (-1)^n \frac{x^{2n + 1}}{(2n+1)!} + o(x^{2n + 2})$.
+    \item $\cos x = 1 - \frac{x^2}{2!} + \frac{x^5}{4!} - \ldots + (-1)^n \frac{x^{2n}}{(2n)!} + o(x^{2n+1})$.
+    \item $\ln (1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \ldots + (-1)^{n-1} x^\frac{n}{n} + o(x^n)$ 
+    \item $(1+x)^p = 1+px + \frac{p(p-1)}{2!}x^2 + \frac{p(p-1)(p-2)}{3!}x^3 + \ldots + \frac{p(p-1)\ldots(p-n+1)}{n!}x^n + o(x^n)$.
+\end{itemize}
+\begin{proof}
+    $f(x) = \sum_{k=0}^{m} \frac{f^{(k)}(0)}{k!} + o(x^m)$
+    \begin{itemize}
+    \item Для $f(x) = e^x$ $f^{(k)}(x) = e^x$, $f^{(k)}(0) = 1$
+    \item Для $f(x) = \sin x$ $f^{(k)}(x) = \sin(x + \frac{\pi k}2)$, $f^{(k)}(0) = \sin(\frac{\pi k}2)$
+    \item Для $f(x) = \cos x$ $f^{(k)}(x) = \cos(x + \frac{\pi k}2)$, $f^{(k)}(0) = \cos(\frac{\pi k}2)$
+    \item Для $f(x) = \ln(1+x)$.  $f^{(k)}(x) = \frac{(-1)^{k-1}(k-1)!}{(1+x)^k}$, $f^{(k)}(0) = (-1)^{k-1}(k-1)!$
+    \item Для $f(x) = (1 + x)^p$, $f^{(k)}(x) = p(p-1)\cdots(p-k+1)(1+x)^{p - k}$, $f^{(k)}(0) = p(p-1)\cdots(p-k+1)$
+    \end{itemize}
+\end{proof}
+
+\textbf{Ряды Тейлора для $e^x$,  $\sin x$,  $\cos x$}
+\begin{align}
+    e^x &= \sum_{n=0}^\infty \frac{x^n}{n!} \\
+    \sin x &= \sum_{n = 0}^\infty \frac{(-1)^nx^{2n+1}}{(2n+1)!} \\
+    \cos x &= \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}
+\end{align}
+\begin{proof}
+    $\sin x, \cos x$ удовлетворяют следствию 2. $(\sin x)^{(n)} = \sin(x + \frac{\pi n}{2}) \Rightarrow |\sin^{(n)}(x)| \le 1$. $|\cos^{(n)}(x)| \le 1$  
+
+    Следовательно, $T_{n, 0}f(x) \xrightarrow{n\to\infty}f(x)$. А значит по определению ряда  $\sum_{k=0}^\infty \ldots = \sin x$
+
+    Рассмотрим $f(x)=e^x$ на  $[a, b] \Rightarrow f^{(n)}(x) = e^x \le e^b$, тогда $|f^{(n)}(x)| \le e^b$. Тогда по свойству ряда и соображениям выше, получаем, что сумма данного ряда равна $e^x$.
+\end{proof}
+\begin{theorem}
+    $e$ --- иррационально.
+\end{theorem}
+\begin{proof}
+    Пусть $e = \frac{m}{n}$, $n \ge 2$ (так как $2 < e < 3$).
+
+    Напишем формулу Тейлора с остатком в форме Лагранжа для функции $e^x$, точки  $x_0 = 0$ и $x=1$:  \begin{align*}
+        e = e^1 = 1 + 1 + \frac{1}{2!} + \ldots + \frac{1}{n!} + \frac{e^c}{(n+1)!},\text{ 0 < c < 1} \\
+        \underbrace{m(n-1)!}_{\mathclap{\text{целое число}}} = \underbrace{n! + n! + \frac{n!}{2!} + \ldots + \frac{n!}{n-1!} + \frac{n!}{n!}}_{\text{целое число}} + \frac{e^c}{n+1}
+    \end{align*}
+    Тогда получаем, что $\frac{e^c}{n+1}$ --- целое число. Но $\frac{e^c}{n+1} > 0 \implies  \frac{e^c}{n+1} \ge 1$. А значит $\frac{e^c}{n+1} \le \frac{e}{2+1} = \frac{e}{3} < 1$.
+\end{proof}
+\Subsection{Экстремумы функций}
+\begin{definition}
+    $f\!: E \to \R$ и  $a \in E$. $a$ --- точка локального минимума $\iff \exists U(a)\!: \forall x \in E \cap U\ f(a)\le f(x)$ 
+\end{definition}
+\begin{definition}
+    $a$ --- точка строгого локального минимума  $\iff \exists U(a)\!: \forall x \in E \cap U\ x \neq a \implies f(a) < f(x)$.
+\end{definition}
+\begin{definition}
+    $f\!: E \to \R$ и  $a \in E$. $a$ --- точка локального максимума $\iff \exists U(a)\!: \forall x \in E \cap U\ f(a)\ge f(x)$ 
+\end{definition}
+\begin{definition}
+    $a$ --- точка строгого локального максимума  $\iff \exists U(a)\!: \forall x \in E \cap U\ x \neq a \implies f(a) > f(x)$.
+\end{definition}
+\begin{definition}
+    $a$ --- точка экстремума, если  $a$ --- точка локального минимума/максимума.
+\end{definition}
+\begin{definition}
+    $a$ --- точка строгого экстремума, если  $a$ --- точка строгого локального  $\max$/$\min$.
+\end{definition}
+\begin{theorem}[необходимые условия экстремума]
+    $f\!:\langle a, b \rangle \to \R$ дифференцируема в  $x_0 \in (a, b)$. Тогда  $x_0$ --- точка экстремума  $\implies f'(x_0) = 0$.
+\end{theorem}
+\begin{proof}
+    Возьмем какую-то окрестность $x_0$, $x_0$ --- точка локального минимума. Причем окрестность такая, что $f(x_0) \le f(x)\ \forall x \in U$. 
+
+    Тогда, рассмотрим $f$ на  $U$.  $x_0$ --- точка минимума этой функции, по теореме Ферма  $f'(x_0) = 0$.
+\end{proof}
+\begin{remark}
+    Обратное неверно: $f(x) = x^3$,  $f'(x) = 3x^2$,  $f'(0) = 0$, но  $0$ --- не точка экстремума.
+\end{remark}
+\begin{remark}
+    Экстремум может быть в точке, где нет дифференцируемости. Пример: $f(x) = |x|$.
+\end{remark}
+\begin{remark}
+    Экстремум может быть в концах отрезка. 
+\end{remark}
+\begin{theorem}[Достаточное условия экстремума в терминах первой производной]
+    $x_0 \in (a, b)$,  $f\!:\langle a, b \rangle \to \R$,  $f$ непрерывна в  $x_0$, дифференцируема на  $(x_0 - \delta, x_0) \cap (x_0, x_0 + \delta)$. Тогда: 
+    \begin{enumerate}
+        \item $f'(x) < 0$ на  $(x_0-\delta, x_0)$ и $f'(x) > 0$ на  $(x_0, x_0+\delta)$, то $x_0$ --- строгий минимум.
+        \item $f'(x) > 0$ на  $(x_0-\delta, x_0)$ и $f'(x) < 0$ на  $(x_0, x_0+\delta)$, то $x_0$ --- строгий максимум.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    На $[x_0 - \frac{\delta}{2}, x_0]$ $f$ непрерывна, дифференцируема внутри и  $f' < 0 \xRightarrow{\text{сл. т. Лагранжа}} f$ строго убывает на $[x_0 - \frac{\delta}{2}, x_0] \implies f(x_0) < f(x)\ \forall [x_0-\frac{\delta}{2}, x_0)$.
+
+    На $[x_0, x_0 + \frac{\delta}{2}]$ $f$ непрерывна, дифференцируема внутри и  $f' > 0 \implies$  $f$ строго возрастает на  $[x_0, x_0 + \frac{\delta}{2}] \implies f(x_0) < f(x)\ \forall x \in (x_0, x_0 + \frac{\delta}{2}]$
+\end{proof}
+\begin{theorem}[достаточные условия экстремума в терминах второй производной]
+    $f\!:\langle a, b \rangle \to \R$.  $x_0 \in (a, b), f$ дважды дифференцируема в  $x_0$ и  $f'(x_0) = 0$. Тогда:
+     \begin{enumerate}
+         \item $f''(x_0) > 0$, то  $x_0$ --- строгий минимум.
+         \item  $f''(x_0) < 0$, то  $x_0$ --- строгий максимум.
+    \end{enumerate}
+\end{theorem}
+\begin{theorem}[Достаточные условия экстремума в терминах $n$-ой производной]
+    $f\!: \langle a, b \rangle \to \R$. $x_0 \in (a, b), f$ $n$ раз дифференцируема в  $x_0$ и  $f'(x_0) = f''(x_0) = \ldots = f^{(n-1)}(x_0) = 0$. Тогда:
+    \begin{enumerate}
+        \item $n$ --- четно и  $f^{(n)}(x_0) > 0 \Rightarrow x_0$ --- строгий минимум.
+        \item $n$ --- четно и  $f^{(n)}(x_0) < 0 \Rightarrow x_0$ --- строгий максимум.
+        \item $n$ --- нечетно и  $f^{n}(x_0) \neq 0 \Rightarrow x_0$ не точка экстремума.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    $f(x) = f(x_0) + \underbrace{\sum_{k=1}^{n-1} \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k}_{=0} + \frac{f^{(n)}(x_0)}{n!} + o((x-x_0)^n)$
+
+    Тогда $f(x) - f(x_0) = (x-x_0)^n(\frac{f^{(n)}(x_0)}{n!} + o(1))$.
+
+    Тогда в 1: $(x-x_0)^n > 0$  при $x \neq x_0$.  $\frac{f^{(n)}(x_0)}{n!} > 0 \implies$ по теореме о стабилизации знака скобка $(\ldots) > 0$ при $x$ близких к  $x_0 \Rightarrow x_0$ --- строгий минимум (разность $f(x) - f(x_0) > 0$).
+
+    В 2 аналогично получим строгий максимум, поскольку правая скобка будет $< 0$.
+
+    В 3 $(x-x_0)^n$ меняет знак при прохождении $x_0$, поэтому с одной стороны разность будет одного знака, а с другой --- другого, поэтому не экстремум.
+\end{proof}
+
+\Subsection{Выпуклые функции}
+\begin{definition}
+    $f\!:\langle a, b \rangle \to \R$.  $f$ --- выпуклая, если  $\forall x, y \in \langle a, b \rangle \forall \lambda \in (0, 1)\!: f(\lambda x + (1-\lambda)y) \le \lambda f(x) + (1 - \lambda)f(y)$. 
+
+    Понятно, что такое строго выпуклая, вогнутая (выпуклая вниз), строго вогнутая.
+\end{definition}
+\begin{example}
+    $x^2$ --- выпуклая функция.  $f(\lambda x + (1-\lambda) y) \le \lambda f(x) + (1- \lambda)f(y) = \lambda x^2 + (1-\lambda) y^2$.
+
+    $(\lambda x + (1-\lambda) y)^2 = \lambda^2 x^2 + 2\lambda(1-\lambda)xy + (1-\lambda)^2 y^2$.
+
+    Откуда получаем  $2xy \le x^2 + y^2$.
+\end{example}
+
+\textbf{Геометрический смысл определения}
+
+Возьмем $z=\lambda x + (1-\lambda)y < \lambda y + (1-\lambda)y = y$ и  $z > \lambda x + (1-\lambda) x = x$. Тогда получаем, что  $\lambda(x-y) = z-y \Rightarrow \frac{y-z}{y-x} > 0$. 
+Теперь посмотрим на прямую через точки $x, y$. Тогда получаем, что точка  $(s, t)$ на прямой удовлетворяет уравнению  $\frac{f(y)-f(x)}{y-x}(s-x) + f(x) = t$. Тогда подставим $s=z$ и получим значение функции из определения.
+
+А значит геом. смысл --- любая хорда выше, чем точка.
+
+ \begin{definition}
+     Пусть $u < v < w; u, v, w \in \langle a, b \rangle$
+     $\lambda = \frac{y-z}{y-x} = \frac{w-v}{w - u}$, тогда $1 - \lambda = \frac{v-u}{w-u}$.
+
+     $f(v) \le \frac{w-v}{w-u}f(u) + \frac{v-u}{w-u}f(w)$. 
+
+     Тогда $(w-u)f(v) \le (w-v)f(u)+(v-u)f(w)$
+\end{definition}
+
+\begin{properties}
+    \begin{enumerate}
+        \item $f,g$ --- выпуклые, то  $f+g$ --- выпуклые.
+        \item  $f$ --- выпуклая, $\alpha > 0$, то $\alpha f$ --- выпуклая.
+        \item  $f$ --- выпуклая,  $-f$ --- вогнутая.
+    \end{enumerate}
+\end{properties}
+\begin{lemma}[О трех хордах]
+    $f\!:\langle a, b\rangle \to \R$ выпуклая, $u < v < w$,  $u, v, w \in \langle a, b \rangle$.
+
+    Тогда  $\frac{f(v)-f(u)}{v - u} \le \frac{f(w) - f(u)}{w - u} \le \frac{f(w) - f(u)}{w - v}$.
+\end{lemma}
+\begin{proof}
+    Докажем первое неравенство: $\frac{f(v) - f(u)}{v - u} \le \frac{f(w) - f(u)}{w - u} \iff (w - u)(f(v)-f(u)) \le (v - u)(f(w)-f(u)) \iff (w-u)f(v) \le \underbrace{((w - u) - (v - u))}_{=w-v}f(u) +(v-u)f(w)$.
+
+    Второе  аналогично, третье тоже можно аналогично, но, кажется, транзитивность всё ещё существует.
+\end{proof}
+\begin{theorem}
+    $f\!: \langle a, b \rangle \to \R$ выпуклая. Тогда  $\forall x \in (a, b)$ существуют конечные  $f_{\pm}'(x)$, а ещё $f'_-(x) \le f'_+(x)$
+\end{theorem}
+\begin{proof}
+    Возьмем три точки $x < v < w$. $\frac{f(v) - f(x)}{v-x}$ возрастает по $v$.  $\frac{f(w) - f(x)}{w-x} \ge \frac{f(v) - f(x)}{v-x}$ из леммы о трех хордах. Значит дробь $\frac{f(v) - f(x)}{v - x}$ возрастает по $v$ и ограничена снизу  $\implies$ существует конечный  $\lim_{v \to x+} \frac{f(v)-f(x)}{v-x} \ge \frac{f(u) - f(x)}{u - x}$. 
+
+    $\frac{f(u)-f(x)}{u-x}$ возрастает по $u$ и ограничена сверху  $f'_+(x) \implies f'_-(x) = \lim_{u \to x-} \frac{f(u)-f(x)}{u-x} \le f'_+(x)$
+\end{proof}
+\begin{consequence}
+    $f\!:\langle a, b \rangle \to \R$ выпуклая  $\implies$  $f$ непрерывна на $(a, b)$
+\end{consequence}
+\begin{proof}
+    Существует конечная $f'_+(x) \Rightarrow f$ непрерывна в точке  $x$ справа +  $\exists f'_-(x) \implies f$ непрерывна в  $x$ слева  $\implies$  $f$ непрерывна в  $x \in (a,b)$.
+\end{proof}
+\begin{remark}
+    Про концы ничего неизвестно.
+\end{remark}
+\begin{theorem}
+    $f\!: \langle a, b \rangle \to \R$ дифференцируемая. Тогда  $f$ --- выпуклая  $\iff f(x) \ge f(x_0) + f'(x_0)(x - x_0)\ \forall x, x_0 \in \langle a, b \rangle$
+\end{theorem}
+\begin{proof}
+    В сторону $\Leftarrow$:  $u < v < w, x_0=v$. Тогда  $f(u) \ge f(v) + f'(u)(v-u)$, $f(w) \ge f(u) + f'(u)(v-w)$. Первое домножаем на $(w-v)$, второе на  $(v - u)$
+
+    $(\forall u, v, w \in \langle a, b \rangle : u < v < w  \begin{cases}f(u) \ge f(v) - f'(v)(v - u) \\ f(w) \ge f(v) + f'(v)(w - v)\end{cases} \Rightarrow
+    (w - v)f(u) + (v - u)f(w) \ge (w - v + v - u)f(v) + f'((v - u)(w - v) - (v - u)(v - w)) \Rightarrow (w - u)f(v) \le (v - u)f(w) + (w - v)f(u)) \Rightarrow f - \text{выпукла} 
+    $
+
+    В сторону  $\Rightarrow$. Пусть  $x > x_0$. Надо доказать, что $\frac{f(x) - f(x_0)}{x - x_0} \ge f'(x_0) = \lim_{y \to x_0} \frac{f(y)-f(x_0)}{y-x_0}$ 
+
+    Можно считать, что $x_0 < y < x$. Тогда  $\frac{f(x) - f(x_0)}{x - x_0} \ge \frac{f(y) - f(x_0)}{y - x_0} \to f'(x_0)$.
+\end{proof}
+\begin{theorem}[Критерий выпуклости]
+    \begin{enumerate}
+        \item $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$ и дифференцируема на  $(a, b)$.  $f$ (строго) выпукла $\iff f'$ строго монотонно возрастает на $(a, b)$.
+        \item $f\!:\langle a, b \rangle \to \R$ непрерывна на  $\langle a, b \rangle$ и дважды дифференцируема на  $(a, b)$.  $f$ выпукла $\iff f'' \ge 0$ на $(a, b)$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item $\Rightarrow$.  $u < v$:  $f'(u) \le \frac{f(v) - f(u)}{v - u} \le f'(v)$ по предыдущей теореме $f'(x)$ возрастает.
+
+            $\Leftarrow$  $u < v < w$  $\frac{f(v) - f(u)}{v-u} \le \frac{f(w) - f(v)}{w-v}$ по теореме Лагранжа левое равно $f'(\xi)$, правое ---  $f'(\eta)$. Поскольку  $f'$ возрастает, то все верно.
+
+        \item  $f$ --- выпуклая  $\iff$  $f'$ возрастает, т.е. $(f')' \ge 0$.
+    \end{enumerate}
+\end{proof}
+\begin{example}
+     \begin{enumerate}
+         \item $a^x$ выпуклая,  $a \neq 1$.  $f(x) = a^x \implies f'(x) = a^x\ln a \implies f''(x) = a^x(\ln a)^2 \implies$ строго выпукла.
+         \item  $\ln x$ строго вогнута.
+
+             $f(x) \ln x \implies f'(x) = \frac{1}{x} \implies f''(x) = -\frac{1}{x^2} < 0 \implies$ строго вогнутая.
+         \item $x^p$, при  $x > 0$.  $p > 1$ --- строгая выпуклость,  $p < 0$ строгая выпуклость, если $0 < p < 1$ строгая вогнутость.
+    \end{enumerate}
+\end{example}
+\begin{theorem}[Неравенство Йенсена]
+    Пусть $f\!: \langle a, b \rangle \to \R$ выпуклая функция,  $x_1, x_2,\ldots, x_n \in \langle a, b \rangle$ и $\lambda_1, \lambda_2, \ldots, \lambda_n \ge 0$, причем их сумма равна $1$. Тогда: \[
+        f(\sum_{k=1}^n \lambda_k x_k) \le \sum_{k=1}^n \lambda_k f(x_k)
+    .\] 
+    \textbf{Замечание}. Если $\lambda_k > 0$,  $x_k$ различны и  $f$ строго выпуклая, то знак строгий.
+\end{theorem}
+\begin{proof}
+    Индукция по $n$. База  $n = 2$:  $f(\lambda_1 x_1 + \underbrace{\lambda_2}_{1 - \lambda_1} x_2) \le \lambda_1f(x_1) + \underbrace{\lambda_2}_{1-\lambda_1}f(x_2)$. Это определение индукции.
+
+    Переход от $n$ к  $n+1$:  \[
+\lambda_1 + \lambda_2 + \ldots + \lambda_n = 1 - \lambda_{n+1} \Rightarrow \frac{\lambda_1}{1 - \lambda_{n+1}} + \ldots + \frac{\lambda_n}{1 - \lambda_{n+1}} = 1    
+    .\]
+    Тогда по предположению: \[
+	    \sum_{k=1}^n \frac{\lambda_k}{1 - \lambda_{n+1}} f(x_k) \ge f(\sum_{k=1}^n \frac{\lambda_k x_k}{1 - \lambda_{n+1}}) = f(y)
+    .\]
+    $y = \sum_{k=1}^n \frac{\lambda_k x_k}{1 - \lambda_{n+1}}$
+    \begin{align*}
+        \sum_{k=1}^{n} \lambda_kf(x_k) \ge (1-\lambda_{n+1})f(y) \implies \sum_{k=1}^{n+1} \lambda_k f(x_k) &\ge (1 - \lambda_{n+1})f(y) + \lambda_{n+1}f(x_{n+1}) \ge \\
+                                                                                                            &\ge f(\lambda_{n+1} x_{n+1} + (1 - \lambda_{n+1})y) =\\
+                                                                                                            &=f(\sum_{k=1}^{n+1}\lambda_k x_k)
+     .\end{align*}
+     Второе $\ge$ после $\implies$ следует из определения выпуклости.
+\end{proof}
+\begin{consequence}
+    У вогнутой функции все знаки в другую сторону.
+\end{consequence}
+\begin{theorem}[Неравенство о средних]
+    $x_1, x_2, \ldots, x_n \ge 0$. Тогда $\sqrt[n]{x_1x_2\ldots x_n} \le \frac{x_1 + x_2 + \ldots + x_n}{n}$.
+    
+    Причем из равенства следует равенство чисел.
+\end{theorem}
+\begin{proof}
+    $f(x) = \ln x$ и  $\lambda_1 = \lambda_2 = \ldots = \lambda_n = \frac{1}{n}$. Если $x_k = 0$, то неравенство очевидно.
+
+    Надо доказать, что  $\frac{1}{n}(\ln x_1 + \ln x_2 + \ldots + \ln x_n) \le \ln(x_1 + x_2 + \ldots + x_n)$. А это неравенство Йенсена: \[
+        \ln(\frac{1}{n} x_1 + \frac{1}{n} + x_2 + \ldots + \frac{1}{n}x_n) \ge \frac{1}{n}\ln x_1 + \frac{1}{n} + \ln x_2 + \ldots + \frac{1}{n} \ln x_n
+    .\] 
+\end{proof}
+\begin{definition}
+    Среднее степенное порядка $p$  $M_p \coloneqq \left(\frac{x_1^p + x_2^p + \ldots x_n^p}{n}\right)^{\frac{1}{p}}$.
+\end{definition}
+\begin{definition}
+    Среднее арифметическое $M_1 \coloneqq \frac{x_1 + x_2 + \ldots + x_n}{n}$.
+\end{definition}
+\begin{definition}
+    Среднее квадратическое $M_2 \coloneqq \sqrt{\frac{x_1^2 + x_2^2 + \ldots + x_n^2}{n}}$
+\end{definition}
+\begin{definition}
+	Среднее гармоническое --- $M_{-1} = \frac{n}{\frac1{x_1} + \frac1{x_2} + \cdots + \frac1{x_n}}$
+\end{definition}
+\begin{definition}[Доопределение]
+    $M_0$ --- среднее геометрическое,  $M_{+\infty}$ --- максимальное из чисел,  $M_{-\infty}$ --- минимальное из чисел. 
+\end{definition}
+\begin{exerc}
+    Пусть $x_1, x_2, \ldots, x_n > 0$. Доказать, что $\lim_{p \to 0} M_p = M_0$,  $\lim_{p \to +\infty} M_p = M_{+\infty}$,  $\lim_{p \to -\infty} M_p = M_{-\infty}$.
+\end{exerc}
+\begin{theorem}[Неравенство между средними степенными]
+    Пусть $x_1, x_2, \ldots, x_n > 0$ и $p < q$. Тогда:
+     \[
+         \left( \frac{x_1 ^ p + x_2^p + \ldots + x_n^p}{n} \right)^p \le \left( \frac{x_1 ^ q + x_2^q + \ldots + x_n^q}{n} \right)^q
+    .\] 
+\end{theorem}
+\begin{proof}
+    \slashn
+    \begin{enumerate}
+        \item Случай 1. $p = 1$.  $f(x) = x^q$ --- выпуклая функция,  $\lambda_1 = \lambda_2 = \ldots = \lambda_n = \frac{1}{n}$. Тогда просто подставляем в неравенство Йенсена:
+            \[\left( \frac{x_1 + x_2 + \ldots + x_n}{n} \right)^q = f\left(\frac{x_1 + x_2 + \ldots + x_n}{n}\right) \le \frac{x_1^q + x_2^q + \ldots + x_n^q}{n}.\]
+
+            А дальше просто извлечь корень степени $q$.
+        \item Случай 2.  $0 < p < q$. Возьмем  $r = \frac{q}{p} > 1$ и подставим $x_k^p$ в случай 1 ($p = 1, q = r$): \[
+                \frac{x_1 ^ p + x_2^p + \ldots + x_n^p}{n} \le \left( \frac{(x_1 ^ p)^r + (x_2^p)^r + \ldots + (x_n^p)^r}{n} \right)^{\frac{1}{r}} = \left( \frac{x_1 ^ q + x_2^q + \ldots + x_n^q}{n} \right)^{\frac{p}{q}}
+        .\] 
+        \item Случай 3. $p < q < 0$. Возьмем  $\frac{p}{q} > 1$ и подставим $x_k^q$ в случай 1.
+        \item Случай 4.  $p < 0 < q$.  $\left( \frac{x_1 ^ p + x_2^p + \ldots + x_n^p}{n} \right)^{\frac{1}{p}} \le \sqrt[n]{x_1x_2\ldots x_n} \le \left( \frac{x_1 ^ q + x_2^q + \ldots + x_n^q}{n} \right)^{\frac{1}{q}}$.
+
+            Подставим $x_1^q, x_2^q,\ldots x_n^q$ в неравенство о средних \[
+                \frac{x_1^q + x_2^q + \ldots + x_n^q}{n} \ge \sqrt[n]{x_1^qx_2^q\ldots x_n^q} = \left(\sqrt[n]{x_1x_2\ldots x_n}\right)^q
+            .\] и корень степени $q > 0$.
+            \[
+                \frac{x_1^p + x_2^p + \ldots + x_n^p}{n} \ge \sqrt[n]{x_1^px_2^p\ldots x_n^p} = \left(\sqrt[n]{x_1x_2\ldots x_n}\right)^p
+            .\] и корень степени $p < 0$, знак поменяется.
+    \end{enumerate}
+\end{proof}
+\begin{remark}
+    $M_p \le M_q$, если $p \le q$.
+\end{remark}
+\begin{theorem}[Неравенство Гёлдера]
+    $a_k, b_k \ge 0$, $p, q > 1$ и  $\frac{1}{p} + \frac{1}{q} = 1$. Тогда: \[
+        \sum_{k=1}^{n} a_kb_k \le \left(\sum_{k=1}a_k^p\right)^{\frac{1}{p}} \cdot \left(\sum_{k=1}^n b_k^q\right)^{\frac{1}{q}}.
+    .\] 
+\end{theorem}
+\begin{proof}
+    Берем $f(x) = x^p$. Пусть  $B \coloneqq \sum_{k=1}^n b_k^q$. Тогда возведем неравенство в степень  $p$:  $\left(\sum_{k=1}^n a_k \frac{b_k}{B^{\frac{1}{q}}}\right)^p \le \sum_{k=1}^n a_k^p$. 
+
+    Пытаемся подогнать под вид Йенсена, получаем систему $\lambda_kx_k^p = a_k^p$ и  $\lambda_k x^k = \frac{a_k b_k}{B^{\frac{1}{q}}}$. 
+
+    Получаем, что $x_k^{p-1} = \frac{a_k^{p-1}B^{\frac{1}{q}}}{b_k}$.
+
+    Тогда $x_k = \frac{a_k}{b_k^{\frac{1}{p-1}}} \cdot B^{\frac{1}{q(p-1)}} = \frac{a_k}{b_k^{\frac{q}{p}}} \cdot B^{\frac{1}{p}}$. Откуда можно выразить $\lambda$.
+\end{proof}
+\begin{consequence}[Неравенство Коши-Буняковского]
+    \[\left(\sum_{k=1}^n a_k b_k\right)^2 \le \left(\sum_{k=1}^n a_k^2\right) \cdot \left(\sum_{k=1}^n b_k^2\right)\]
+\end{consequence}
+\begin{proof}
+    Давайте применим неравенство Гёлдера для чисел $|a_k|$ и $|b_k|$, а $p = q = 2$.
+    
+    Тогда $\left(\sum_{k=1}^n |a_k|^2\right) \cdot \left(\sum_{k=1}^n |b_k|^2\right) \ge \left(\sum_{k=1}^n |a_k| \cdot |b_k|\right)^2$.
+    
+    Это почти то, что нужно с точностью до модулей. 
+    
+    Заметим, что в левой части модули можно отбросить, так как возводится в квадрат. 
+    
+    В правой же части можно заметить, что $\left(\sum_{k=1}^n |a_k|\cdot|b_k|\right)^2 \ge \left(\sum_{k=1}^n a_k b_k\right)^2$.
+    
+    Значит по транзитивности получим то, что нужно.
+\end{proof}
+
+\begin{consequence}[Неравенство Минковского]
+    $p \ge 1, a_k, b_k \ge 0$. Тогда \[
+        \left(\sum_{k=1}^n a_k^p\right)^{\frac{1}{p}} + \left(\sum_{k=1}^n b_k^p \right)^{\frac{1}{p}} \ge \left(\sum_{k=1}^n (a_k + b_k)^p\right)^{\frac{1}{p}}
+    .\] 
+\end{consequence}
+\begin{proof}
+    $p = 1$ очевидно. 
+    \begin{align*}
+        C \coloneqq \sum_{k=1}^n (a_k+b_k)^p = \sum_{k=1}^n (a_k+b_k)(a_k+b_k)^{p-1} = \sum_{k=1}^n a_k(a_k+b_k)^{p-1} + \sum_{k=1}^n b_k(a_k+b_k)^{p-1} \\
+        \sum_{k=1}^n a_k(a_k + b_k)^{p-1} \le (\sum_{k=1}^n a_k^p)^{\frac{1}{p}} (\sum_{k=1}^n((a_k + b_k)^{p-1})^{q})^{\frac{1}{q}} = (\sum_{k=1}^n a_k^p)^{\frac{1}{p}}(\sum_{k=1}^n(a_k+b_k)^p)^{\frac{p-1}{n}} \\
+        C \le (\sum a_k^p)^{\frac{1}{p}} \cdot c^{\frac{p-1}{p}} + (\sum b_k^p)^{\frac{1}{p}} \cdot C^{\frac{p-1}{p}} \Rightarrow C^{\frac{1}{p}} \le (\sum a_k^p)^{\frac{1}{p}} + (\sum b_k^p)^{\frac{1}{p}}
+    \end{align*}
+\end{proof}
