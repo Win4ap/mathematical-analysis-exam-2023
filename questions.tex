@@ -88,7 +88,55 @@ $A \subsetneq B$, то есть $A \subset B \wedge A \ne \varnothing \wedge A \
 \\
 \\
 
-2. \textbf{Отношения: область определения, область значений, обратное отношение, композиция отношений, свойства, примеры.}
+2. \textbf{Отношения: область определения, область значений, обратное отношение, композиция отношений, свойства, примеры.}\\
+Отношение $R \subset X \times Y$. $x$ и $y$ находятся в отношении $R$, если их $\left<x, y\right> \in R$.
+\begin{itemize}
+    \item Область определения $\delta_R = {dom}_R = \{x \in X: \; \exists y \in Y: \; \left<x, y\right> \in R$.
+    \item Область значений $\rho_R = {ran}_R = \{y \in Y: \; \exists x \in X: \; \left<x, y\right> \in R$
+    \item Обратное отношение $R^{-1} \subset Y \times X \; \; R^{-1} = \{\left<y,x\right>\} \in R$.
+    \item Композиция отношения. $R_1 \subset X \times Y, R_2 \subset Y \times Z: \; R_1 \circ R_2 \subset X \times Z$.
+    \item $R_1 \circ R_2 = \{\left<x, z\right> \in X \times Z\; \vert \; \exists y \in Y: \; \left<x,y\right> \in R_1 \land \left<y,z\right> \in R_2\}$
+\end{itemize}
+
+Свойства:
+\begin{itemize}
+    \item Функция из $X$ в  $Y$ --- отношение ($\delta_f = X$), для которого верно:
+    \[
+    \left. \begin{array}{l} \left<x,y\right> \in f \\ \left<x, z\right> \in f \end{array} \right\} \Rightarrow y = z
+    .\]
+    Используется запись $y = f(y)$. 
+    \item Последовательность - функция у которой $\delta_f = \mathbb{N}$
+    \item Отношение $R$ называется рефлективным, если $\forall x: \; \left<x, x\right> \in R$.
+    \item Отношение $R$ называется симметричным, если  $\forall x, y \in X: \; \left<x, y\right> \in R \Rightarrow \left<y, x\right> \in R$
+    \item Отношение $R$ называется иррефлективным, если  $\forall x \left<x,x\right> \notin R$
+    \item Отношение $R$ называется антисимметричным, если  $\left. \begin{array}{r} \left<x, y\right> \in R \\ \left<y, x\right> \in R\end{array} \right\} \Rightarrow x = y$
+    \item Отношение $R$ называется транзитивным, если  $\left. \begin{array}{r} \left<x, y\right> \in R \\ \left<y, z\right> \in R\end{array} \right\} \Rightarrow \left<x, z\right> \in R$\\
+    \item Отношение называется отношением эквивалентности, если отношение рефлективно, симметрично, транзитивно. Например: Равенство, сравнение по модулю $\mathbb{Z}$,  $\|$, отношение подобия треугольников.
+    \item Если выполняется рефлективность, антисимметричность и транзитивность, от данное отношение --- отношение нестрогого частичного порядка. Например: $\ge$; $A \subset B$ на $2^X$.
+    \item Если выполняется иррефлективность и транзитивность, то данное отношение --- отношение строгого частичного порядка. Например: $>$;  $A$ собственное подмножество  $B$ на  $2^X$.
+    \item Иррефлексивность + транзитивность $\Rightarrow$ антисимметрично.
+    \item $R$ - нестрогий ч.п.  $\Rightarrow$ $R = \{\left<x,y\right> \in R: \; x \neq y\}$ --- строгий ч.п.
+\end{itemize}
+
+Примеры отношений:
+\begin{itemize}
+    \item Отношение равенства. $R = \{\left<x,x\right>: \; x \in X\}$. Но это просто равенство.
+    \item "$\ge$" ($X = \mathbb{R}$). $R = \{ \left<x,y\right>: \; x \ge y\}$
+    \item "$>$" ($X = \mathbb{R}$). $R = \{\left<x,y\right>: x > y\}$ \\
+        $\delta_{>} = {2,3,4\ldots}$\\
+        $\rho_> = \mathbb{N}$\\
+        $>^{-1} = < = \{\left<x,y\right>: \; x < t\}$ \\
+        $> \circ > = \{\left<x,z\right>\; x-z\ge2\}$
+    \item $X$ --- прямые на плоскости. "$\perp$":  $R = \{\left<x,y\right>: \; x \perp y\}$. \\
+            $\delta_\perp = \rho_\perp = X$ \\
+            $\perp^{-1} = \perp$\\
+            $\perp \circ \perp = \|$
+    \item $\left<x, y\right> \subset R$, когда  $x$ --- отец  $y$. \\ 
+        $\delta_R = \{\text{Все, у кого есть сыновья}\}$. \\
+        $\rho_R$ --- религиозный вопрос. См. Библию \\
+        $R^{-1} = \text{сын}$ \\
+        $R \circ R = \{\text{дед по отцовской линии}\}$
+\end{itemize}
 
 3. \textbf{Аксиомы вещественных чисел. Математическая индукция. Существование наибольшего и наименьшего элемента в конечном множестве. Следствия.}
 
