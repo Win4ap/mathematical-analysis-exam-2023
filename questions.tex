@@ -28,7 +28,65 @@
 \maketitle
 \large
 
-1. \textbf{Множества: упорядоченная пара, декартово произведение, операции над множествами. Правила де Моргана.}
+1. \textbf{Множества: упорядоченная пара, декартово произведение, операции над множествами. Правила де Моргана.}\\
+Множество - какой-то набор элементов. Для любого элемента можно сказать принадлежит множеству или нет.\\
+$A \subset B$, то есть $\forall x : x \in A \Rightarrow x \in B$ (А - подмножество B)\\
+$A = B$, то есть $A \subset B \wedge B \subset A$ (A равно B)\\
+$A \subsetneq B$, то есть $A \subset B \wedge A \ne \varnothing \wedge A \ne B$ (A - собственное подмножество B)\\
+Способы задать множетсво:
+\begin{itemize}
+    \item Полное задание: $\{a,b,c\}$.
+    \item Неполное: $a_1, a_2, ..., a_k$. Но должно быть понятно как образована последовательно. Например $\{1,5,...,22\}$ — непонятно.
+    \item Можно так же и бесконечные: $\{a1, a2, ...\}$.
+    \item Словесным описанием. Например, множество простых чисел.
+    \item Формулой. Например, пусть задана функция $F(x)$ — функция для всех чисел, которая возращает истину или ложь. Тогда можно взять множество $\{x : F(x)\}$.
+\end{itemize}
+Операции с множествами:\\
+\begin{center}
+  \renewcommand{\arraystretch}{1.7}
+  \begin{tabular}{| c | c | c |}
+    \hline
+    \textbf{Символ} & \textbf{Определение} & \textbf{Описание}\\
+    \hline
+    {\Large $\cap$} & $A \cap B = \{ x \mid x \in A \land x \in B\}$ & Пересечение множеств\\
+    \hline
+    {\Large $\bigcap_{k=1}^n A_k$} & $A = A_1 \cap A_2 \cap \ldots \cap A_n$ & Пересечение множества множеств \\
+    \hline
+    {\Large $\cup$} & $A \cup B = \{ x \mid x \in A \lor x \in B\}$ & Объединение множеств\\
+    \hline
+    {\Large $\bigcup_{k=1}^n A_k$} & $A = A_1 \cup A_2 \cup \ldots \cup A_n$ & Объединение множества множеств \\
+    \hline
+    {\Large $\setminus$} & $A \setminus B = \{ x \mid x \in A \land x \notin B\}$ & Разность множеств\\
+    \hline
+    {\Large $\times$} & $A \times B = \{ (x,\,y) \mid x \in A, y \in B\}$ & Декартово произведение\\
+    \hline
+    {\Large $\bigtriangleup$} & $A \bigtriangleup B = (A \setminus B) \cup (B \setminus A)$ & Симметрическая разность\\
+    \hline
+    {\Large $\varnothing$} & $\forall x: \; x \notin \varnothing$ & пустое множество\\ 
+    \hline
+    {\Large $\mathbb{N}$} & & Натуральные числа\\
+    \hline
+    {\Large $\mathbb{Z}$} & & целые числа \\
+    \hline
+    {\Large $\mathbb{Q}$} & $\frac{a}{b}$, где $a \in \mathbb{Z}, b \in \mathbb{N}$ & рациональные числа \\
+    \hline
+    {\Large $\mathbb{R}$} & & действительные числа \\
+    \hline
+    {\Large $2^X$} & & множество всех подмножеств $X$ \\
+    \hline
+  \end{tabular}
+\end{center}
+Важный момент: $1 \in \{1\}$, но  $1 \notin\{\{1\}\}$\\
+Правила де Моргана:\\
+Пусть есть $A_\alpha \subset X$
+\begin{enumerate}
+     \item $X \setminus \bigcup_{\alpha \in I} A_\alpha = \bigcap_{\alpha \in I} X \setminus A_\alpha$.
+     \item $X \setminus \bigcap_{\alpha \in I} A_\alpha = \bigcup_{\alpha \in I} X \setminus A_\alpha$.
+\end{enumerate}
+Доказательство: $X \setminus \bigcup_{\alpha \in I} A_{\alpha} = \{x: x \in X \land x \notin A_{\alpha} \; \forall \alpha \in I\} = \{x: \forall \alpha \in I X \setminus A_{\alpha}\} = \bigcap_{\alpha \in I} X \setminus A_{\alpha}$.\\
+Упорядоченная пара $\left<x,y\right>$. Важное свойство $\left<x, y\right> = \left<x',y'\right> \iff x = x' \land y = y'$\\
+\\
+\\
 
 2. \textbf{Отношения: область определения, область значений, обратное отношение, композиция отношений, свойства, примеры.}
 
