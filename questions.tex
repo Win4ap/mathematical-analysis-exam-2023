@@ -93,18 +93,18 @@ $A \subsetneq B$, то есть $A \subset B \wedge A \ne \varnothing \wedge A \
 \begin{itemize}
     \item Область определения $\delta_R = {dom}_R = \{x \in X: \; \exists y \in Y: \; \left<x, y\right> \in R$.
     \item Область значений $\rho_R = {ran}_R = \{y \in Y: \; \exists x \in X: \; \left<x, y\right> \in R$
-    \item Обратное отношение $R^{-1} \subset Y \times X \; \; R^{-1} = \{\left<y,x\right>\} \in R$.
+    \item Обратное отношение $R^{-1} \subset Y \times X \; \; R^{-1} = \{\left<x,y\right>\} \in R$.
     \item Композиция отношения. $R_1 \subset X \times Y, R_2 \subset Y \times Z: \; R_1 \circ R_2 \subset X \times Z$.
     \item $R_1 \circ R_2 = \{\left<x, z\right> \in X \times Z\; \vert \; \exists y \in Y: \; \left<x,y\right> \in R_1 \land \left<y,z\right> \in R_2\}$
 \end{itemize}
 
 Свойства:
-\begin{itemize}
+\begin{enumurate}
     \item Функция из $X$ в  $Y$ --- отношение ($\delta_f = X$), для которого верно:
     \[
     \left. \begin{array}{l} \left<x,y\right> \in f \\ \left<x, z\right> \in f \end{array} \right\} \Rightarrow y = z
     .\]
-    Используется запись $y = f(y)$. 
+    Используется запись $y = f(x)$. 
     \item Последовательность - функция у которой $\delta_f = \mathbb{N}$
     \item Отношение $R$ называется рефлективным, если $\forall x: \; \left<x, x\right> \in R$.
     \item Отношение $R$ называется симметричным, если  $\forall x, y \in X: \; \left<x, y\right> \in R \Rightarrow \left<y, x\right> \in R$
@@ -114,9 +114,8 @@ $A \subsetneq B$, то есть $A \subset B \wedge A \ne \varnothing \wedge A \
     \item Отношение называется отношением эквивалентности, если отношение рефлективно, симметрично, транзитивно. Например: Равенство, сравнение по модулю $\mathbb{Z}$,  $\|$, отношение подобия треугольников.
     \item Если выполняется рефлективность, антисимметричность и транзитивность, от данное отношение --- отношение нестрогого частичного порядка. Например: $\ge$; $A \subset B$ на $2^X$.
     \item Если выполняется иррефлективность и транзитивность, то данное отношение --- отношение строгого частичного порядка. Например: $>$;  $A$ собственное подмножество  $B$ на  $2^X$.
-    \item Иррефлексивность + транзитивность $\Rightarrow$ антисимметрично.
     \item $R$ - нестрогий ч.п.  $\Rightarrow$ $R = \{\left<x,y\right> \in R: \; x \neq y\}$ --- строгий ч.п.
-\end{itemize}
+\end{enumurate}
 
 Примеры отношений:
 \begin{itemize}
@@ -158,12 +157,16 @@ $A \subsetneq B$, то есть $A \subset B \wedge A \ne \varnothing \wedge A \
 \end{itemize}
 Свойство дистрибутивности: $(x+y) \cdot z = x \cdot z + y \cdot z$. Структура с данными операциями называется полем.
 
-Введем отношение $\le$: Оно рефлексивно, антисимметрично и транизитивно, то есть нестрогий частичного порядка. Причем:
-\begin{itemize}
-    \item $x< y \Rightarrow x+z < y+z$
-    \item  $0 \le x \land 0 \le y \Rightarrow 0 \le x\cdot y$
-\end{itemize}
-Аксиома полноты: Если $A$ и $B \subset \mathbb{R}$ и $\forall a \in A, b \in B: \; a \le b$ и $A \neq \varnothing \land B \neq \varnothing$, тогда $\exists c \in \mathbb{R}\; a \le c \le b$.\\
+Введем отношение $\le$: Оно рефлексивно, антисимметрично и транизитивно, то есть нестрогий частичного порядка:
+\begin{enumerate}
+    \item $a \le a$
+    \item $a \le b \wedge b \le a \Rightarrow a = b$
+    \item $a \le b \wedge b \le c \Rightarrow a \le c$
+    \item $\forall a, b$ выполняется $a \le b \vee b \le a$
+    \item С операцией + : $\forall c$ выполняется $a \le b \Rightarrow a + c \le b + c$
+    \item С операцией $\cdot$ : $a > 0, b > 0 \Rightarrow ab > 0$
+\end{enumerate}
+Аксиома полноты: Если $A$ и $B \subset \mathbb{R}$ и $\forall a \in A, b \in B: \; a \le b$ и $A \neq \varnothing \land B \neq \varnothing$, тогда $\exists c \in \mathbb{R}\; a \le c \le b$ (+ $A$ левее $B$).\\
 Множество рациональных не удовлетворяет аксиоме полноты.\\
 Например: $A = \{x \in \mathbb{Q} \; \vert \; x^2 < 2\}$,  $B = \{x \in \mathbb{Q} \; \vert \; x>0 \land x^2 > 2\}$. Единственная точка, между этими множествами --- $\sqrt{2}$ 
 
@@ -182,23 +185,30 @@ $A \subsetneq B$, то есть $A \subset B \wedge A \ne \varnothing \wedge A \
         \end{enumerate}
 \end{itemize}
 
-Определение. Пусть $A \subset \mathbb{R}$. Тогда  $A$ --- ограничено сверху, если  $\exists c \in \mathbb{R}: \; \forall a \in A\; a \le c$. Такое $c$ называется верхней границей.\\
-
-Определение. Пусть $A \subset \mathbb{R}$. Тогда  $A$ --- ограничено снизу, если  $\exists b \in \mathbb{R}: \; \forall a \in A\; a \ge b$. Такое  $b$ называется нижней границей.\\
-
-Определение. Пусть $A \subset \mathbb{R}$. Тогда  $A$ --- ограничено, если оно ограничено сверху и снизу. Например: $\mathbb{N}$ не ограничено сверху, но ограничено снизу.\\
-
-Доказательсво. Пусть $\exists c \in \mathbb{R}: \; c \ge n\; \forall n \in \mathbb{N}$. Тогда это противоречит принципу Архимеда при $x = c, y = 1$. \\ Для ограниченности снизу достаточно взять $c=-1$.\\
-
 4. \textbf{Принцип Архимеда. Следствия. Наибольший элемент в множестве целых чисел. Существование целой части числа.}\\
 Принцип Архимеда:\\
 Пусть $x \in \mathbb{R} \land y > 0$. Тогда  $\exists n \in \mathbb{N}:\; x < ny$\\
 Доказательство:\\
-$A = \{u \in \mathbb{R}:\; \exists n \in \mathbb{N}:\; u < ny\}$. Пусть $A \neq! \mathbb{R}$, $B = \mathbb{R} \setminus A \neq \varnothing$,  $A \neq \varnothing$, т.к.  $0 \in A$.\\
-Возьмем  $a \in A, b \in B$.  $b < a \Rightarrow \exists n: \; a < ny \Rightarrow b < ny \Rightarrow \texttt{противоречие}$. \\
-По аксиоме полноты $\exists c \in \mathbb{R}: \; a \le c \le b \; \forall a \in A, \forall b \in B$.\\
-Пусть $c \in A$. Тогда  $c < ny \Rightarrow c < c + y < ny + y = (n+1)y \Rightarrow c < c + y \Rightarrow c + y \in A$. Противоречие.\\
-Пусть  $c \in B$.  Рассмотрим $c-y<c \Rightarrow c-y \in A \Rightarrow \exists n: \; c - y < ny \Rightarrow c < ny + y = (n+1)y \Rightarrow c \in A$. Противоречие.\\
+Фиксируем $g$\\
+$A = \{a \in \mathbb{R}$ | $a < yn\}$\\
+$B \mathbb{R}\setminus A \Rightarrow B = \{b \in \mathbb{R}$ | $\forall n : b \ge yn\}$\\
+Пусть $B$ левее $A$ : $\forall a, b; \exists n$ : \begin{cases}
+    $b \le a$
+    \\
+    $a < yn$
+\end{cases} $\Rightarrow b < yn ??? \Rightarrow A$ левее $B \Rightarrow \exists c$ : \begin{cases}
+    $\forall \le c$
+    \\
+    $\forall \ge c$
+\end{cases} $\Rightarrow$ \begin{cases}
+    $c - y = a' \in A$
+    \\
+    $c + y = b' \in B$
+\end{cases} $\Rightarrow c = a' + y < yn' + y = y(n' + 1) = y\widetilde{n}$\\
+$b' = c + y \le y\widetilde{n} + y = y(\widetilde{n} + 1) = yn \Rightarrow b' \le yn ??? \Rightarrow$ \begin{cases}
+    $B = \varnothing \Rightarrow A = \mathbb{R}$\\
+    $A = \mathbb{R}\setminus B$
+\end{cases}
 
 Следствие:\\
 Если $\epsilon > 0$, то $\exists n \in \mathbb{N} \; \frac{1}{n} < \epsilon$\\
@@ -219,33 +229,324 @@ $x = 1, y = \epsilon \Rightarrow ny = n \epsilon > x = 1 \iff \epsilon > \frac{1
     \item $x - 1 < [x] \le x$
 \end{enumerate}
 
-5. \textbf{! Супремум и инфимум. Определение и теорема существования. Характеристика супремума.}
+5. \textbf{! Супремум и инфимум. Определение и теорема существования. Характеристика супремума.}\\
+Определение. Пусть $A \subset \mathbb{R}$. Тогда  $A$ --- ограничено сверху, если  $\exists c \in \mathbb{R}: \; \forall a \in A\; a \le c$. Такое $c$ называется верхней границей.\\
 
-6. \textbf{! Теорема о вложенных отрезках. Существенность условий.}
+Определение. Пусть $A \subset \mathbb{R}$. Тогда  $A$ --- ограничено снизу, если  $\exists b \in \mathbb{R}: \; \forall a \in A\; a \ge b$. Такое  $b$ называется нижней границей.\\
 
-7. \textbf{! Монотонные и ограниченные последовательности. Два определения предела и их равносильность. Примеры.}
+Определение. Пусть $A \subset \mathbb{R}$. Тогда  $A$ --- ограничено, если оно ограничено сверху и снизу. Например: $\mathbb{N}$ не ограничено сверху, но ограничено снизу.\\
+
+Доказательсво. Пусть $\exists c \in \mathbb{R}: \; c \ge n\; \forall n \in \mathbb{N}$. Тогда это противоречит принципу Архимеда при $x = c, y = 1$. \\ Для ограниченности снизу достаточно взять $c=-1$.\\
+
+$\sup A$ --- наименьшая верхняя граница множества $A$\\
+$A \subset \mathbb{R}$, $a \ne \varnothing$, $A$ - ограничено сверху\\
+Характеристика: если $A \subset \mathbb{R}$, $A \ne \varnothing$, $A$ - ограничено сверху, тогда $\exists\sup A$\\
+
+$\inf A$ --- наибольшая нижняя граница множества $A$\\
+$A \subset \mathbb{R}$, $a \ne \varnothing$, $A$ - ограничено снизу\\
+
+Доказательсво существования: $B = \{\text{все верхние границы множества $A$}\}$\\
+$B \subset \mathbb{R}$, $B \ne \varnothing$, $A \text{ левее } B$, $a \le b\  \forall a \in A$, $\forall b \in B \Rightarrow \exists c \in \mathbb{R}$ : \begin{cases}
+    $a \le c$ - верх $A$
+    \\
+    $c \le b$ - низ $A$
+\end{cases} $\Rightarrow c = \sup A$\\
+Аналогично с $\inf A$\\
+
+6. \textbf{! Теорема о вложенных отрезках. Существенность условий.}\\
+Теорема о вложенных отрезках:\\
+$[a_1; b_1] \supset [a_2; b_2] \supset ... \supset [a_n; b_n] \supset ...$\\
+Тогда $\bigcap_{n=1}^{+\infty} [a_n; b_n] \ne \varnothing\  (\exists c\ : \ \forall n\  c \in [a_n; b_n])$\\
+Доказательство:\\
+\begin{cases}
+    $A = \{a_1, a_2, ..., a_n, ...\}$, $A \ne \varnothing$\\
+    $B = \{b_1, b_2, ..., b_n, ...\}$, $B \ne \varnothing$\\
+    $A\text{ левее }B$,\ $a_k \le b_m \ \forall k,m$
+\end{cases}$\Rightarrow$\\$\Rightarrow$ по аксиоме полноты $\exists c$,\ $\forall a \in A$, $\forall b \in B$ : $a \le c \le b \Rightarrow \forall n\  a_n \le c \le b_n \Rightarrow c \in [a_n; b_n] \forall n \in \mathbb{N} \Rightarrow \bigcap_{n=1}^{+\infty} [a_n; b_n] \ne \varnothing$\\
+$A\text{ левее }B$, так как:
+\begin{enumerate}
+    \item $k = m$
+    \item $m > k \ a_k \le a_m \le b_n$
+    \item $m < k \ a_k \le b_k \le b_m$
+\end{enumerate}
+Существенность условий: для лучей и полуинтервалов неверно.\\
+
+7. \textbf{! Монотонные и ограниченные последовательности. Два определения предела и их равносильность. Примеры.}\\
+$\{x_n\}_{n=1}^{+\infty}$ - возрастающая (неубывающая), если $\forall n\ x_{n+1} \ge x_n$\\
+$\{x_n\}_{n=1}^{+\infty}$ - строго возрастрает, если $\forall n\ x_{n+1} > x_n$\\
+$\{x_n\}_{n=1}^{+\infty}$ - убывающая, если $\forall n\ x_{n+1} \le x_n$\\
+$\{x_n\}_{n=1}^{+\infty}$ - строго убывающая, если $\forall n\ x_{n+1} < x_n$\\
+$\{x_n\}_{n=1}^{+\infty}$ - ограниченна сверху, если $\exists m \in \mathbb{R}:\ \forall n\ x_n \le m$\\
+$\{x_n\}_{n=1}^{+\infty}$ - ограниченна снизу, если $\exists m \in \mathbb{R}:\ \forall n\ x_n \ ge m$\\
+$\{x_n\}_{n=1}^{+\infty}$ - ограниченная, если ограниченна сверху и снизу\\
+Опеределения предела:\\
+\textit{Не classic}\\
+$a = \lim_{n \rightarrow +\infty}x_n$, если  все любого интервала, содержащего точку $a$, находиться лишь конечное число членов.\\
+\textit{Classic}\\
+$a = \lim_{n \rightarrow +\infty}x_n \Leftrightarrow \forall \epsilon > 0\ \exists N \in \mathbb{N}:\ \forall n \ge N\ a - \epsilon < x_n < a + e$\\
+$|x_n - a| < \epsilon$\\
+Равносильность состоит в том, что внутри отрезка $[a-\epsilon; a+\epsilon]$ у нас находится бесконечное число членов, а значит вне его находится конечное число членов.\\
 
 8. \textbf{! Простейшие свойства пределов последовательностей (единственность предела, предельный переход в неравенстве, ограниченность).}
+Единственность предела:\\
+Если существует два разных предала одной последовательности, то вне двух интервалах находится конечное число членов $\Rightarrow\{x_n\}_{n=1}^{+\infty}$ имеет конечное число членов???\\
 
-9. \textbf{! Теорема о стабилизации знака и теорема о двух милиционерах. Следствия.}
+Ограниченность:\\
+Если последовательность имеет предел, то она ограничена\\
+$\exists a:\ \lim_{n \rightarrow +\infty} = a \Rightarrow \{x_n\}_{n=1}^{+\infty}$\\
+Рассмотрим интервал $[a-1; a+1]$\\
+max(($a+1$), наибольшее невошедшее) = верхняя граница\\
+min(($a-1$), наименьшее невошедшее) = нижняя граница\\
+Из ограниченности НЕ следует существование предела (Например: $x_n = (-1)^n$)\\
 
-10. \textbf{! Предел монотонной последовательности.}
+Если изменить конечное число членов последовательности, то предел не изменится или не появится. Если добавить/удалить/переставить конечное число элементов, то не изменится и не появится.\\
+
+Предельный переход в неравенстве:\\
+\begin{cases}
+    $\forall n\ x_n \le y_n$\\
+    \begin{cases}
+        \lim x_n = a\\
+        \lim y_n = b
+    \end{cases}
+\end{cases} $\Rightarrow a \le b$\\
+Доказательство:\\
+Пусть $a > b$\\
+$\lim x_n = a \Rightarrow \forall \epsilon_1 > 0\ \exists N_1:\ \forall n_1 > N_1\ |x_n - a| < \epsilon_1$\\
+$\lim y_n = b \Rightarrow \forall \epsilon_2 > 0\ \exists N_2:\ \forall n_2 > N_2\ |y_n - b| < \epsilon_2$\\
+$\forall\epsilon\ N = \max(N_1, N_2):\ \forall n > N$ \begin{cases}
+    $|x_n - a| < \epsilon$\\
+    $|y_n - b| < \epsilon$
+\end{cases} $\Rightarrow$ \begin{cases}
+    $a - \epsilon < x_n < a + \epsilon$\\
+    $b - \epsilon < y_n < b + \epsilon$\\
+    $a > b \Rightarrow \exists\epsilon:\ b + \epsilon < a - \epsilon$
+\end{cases} $\Rightarrow y_n < x_n??? \Rightarrow a \le b$
+
+9. \textbf{! Теорема о стабилизации знака и теорема о двух милиционерах. Следствия.}\\
+Теорема о стабилизации знака и теорема:\\
+$\forall n\ x_n < y_n \Rightarrow a \le b$\\
+Следствия:\\
+$\lim x_n = a$\\
+$\forall n:\ x_n \ge A \Rightarrow a \ge A$\\
+$\forall n:\ x_n \le B \Rightarrow a \le B$\\
+$\forall n:\ x_n \in [\alpha; \beta] \Rightarrow a \in [\alpha; \beta]$\\
+Теорема о двух миллиционерах:\\
+$\forall n \in \mathbb{N}:$ \begin{cases}
+    $\lim x_n = a$\\
+    $\lim z_n = a$\\
+    $x_n \le y_n \le z_n$
+\end{cases} $\Rightarrow \lim y_n = a$\\
+Доказательство:\\
+Фиксируем $\epsilon > 0$\\
+$\exists N_1:\ \forall n \ge N_1\ |x_n - a| < \epsilon$\\
+$\exists N_2:\ \forall n \ge N_2\ |z_n - a| < \epsilon$\\
+$N = \max(N_1, N_2)$\\
+$\forall n \ge N$ \begin{cases}
+    $a - \epsilon < x_n < a + \epsilon$\\
+    $a - \epsilon < y_n < a + \epsilon$
+\end{cases} $\Rightarrow a - \epsilon < x_n \le y_n \le z_n < a + \epsilon \Rightarrow a - \epsilon < y_n < a + \epsilon \Rightarrow |y_n - a| < \epsilon \Rightarrow \lim y_n = a$\\
+
+10. \textbf{! Предел монотонной последовательности.}\\
+Теорема о пределе монотонной последовательности:\\
+$\{x\}_{x=1}^{+\infty}$ - возрастает и ограниченна сверху, тогда $\exists \lim x_n = S = \sup\{x_1, ...\}$\\
+$\{y\}_{x=1}^{+\infty}$ - убывает и ограниченна снизу, тогда $\exists \lim y_n$\\
+$\{z\}_{x=1}^{+\infty}$ - монотонная (+ ограниченная?), тогда $\exists \lim z_n \Leftrightarrow \{z_n\}$ - ограниченная\\
+Доказательство:\\
+$\{x\}_{n=1}^{+\infty}$ - ограниченная сверху $\Rightarrow \exists \sup\{x_1, x_2, ..., x_n, ...\} = S = \sup x_n$\\
+$\forall\epsilon > 0\ \exists x_{\widetilde{n}}:$ \begin{cases}
+    $x_{\widetilde{n}} > S - \epsilon$\\
+    ${x_n}$ - возрастает
+\end{cases} $\Rightarrow \forall n \ge \widetilde{n}$\\
+$S + \epsilon > S \ge x_n \ge x_{\widetilde{n}} > S - \epsilon \Rightarrow |x_n - S| < \epsilon \Rightarrow \lim x_n = S$\\
 
 11. \textbf{Арифметические свойства пределов последовательности.}
+\begin{enumerate}
+    \item $\lim(x_n + y_n) = a + b$
+    \item $\lim(x_n \cdot y_n = a \cdot b)$
+    \item $\lim(c \cdot x_n) = c \cdot a$
+    \item $\lim(\dfrac{x_n}{y_n}) = \dfrac{a}{b}$
+    \item $\lim(|x_n + \alpha_n|) = |a|$, где $\alpha_n$ - б/м (то есть $\lim \alpha_n = 0$)
+\end{enumerate}
+Доказательства:\\
+1. $\lim x_n \Leftrightarrow \lim(x_n + \alpha_n)$\\
+$\lim y_n \Leftrightarrow \lim(y_n + \beta_n)$\\
+$x_n + y_n = (x_n + \alpha_n) + (y_n + \beta_n) = (a + b) + (\alpha_n + \beta_n) = a + b + \gamma_n \Rightarrow \lim(x_n + y_n) = a + b$\\
 
-12. \textbf{! Бесконечные пределы. Бесконечно большие. Связь между бесконечно малыми и бесконечно большими. Аналоги теорем для бесконечных пределов.}
+2. \begin{cases}
+    $x_n = a + \alpha_n$\\
+    $y_n = b + \beta_n$
+\end{cases} $\Rightarrow x_y \cdot y_n = (a + \alpha_n)\cdot(b + \beta_n) = ab + a\beta_n + \alpha_n b + \alpha_n\beta_n$ ($a\beta_n,\ \alpha_n b,\ \alpha_n\beta_n$) - б/м $\Rightarrow \lim(x_n\cdot y_n) = a\cdot b$\\
 
-13. \textbf{Арифметические действия в $\overline{\mathbb{R}}$. Примеры.}
+4. $\lim(\dfrac{x_n}{y_n}) = \lim(x_n \cdot \dfrac{1}{y_n})$\\
+$\lim(\dfrac{1}{y_n})$, $y_n = b + \beta_n$\\
+$\dfrac{1}{y_n} = \dfrac{1}{b + \beta_n} = \dfrac{1}{b} - \dfrac{1}{b} + \dfrac{1}{b + \beta_n} = \dfrac{1}{b} - \dfrac{b + \beta_n - b}{b(b + \beta_n)} = \dfrac{1}{b} - \beta_n \cdot \dfrac{1}{b(b + \beta_n)}$\\
+$\dfrac{1}{b(b + \beta_n)}$ - ограниченная, так как $\lim \dfrac{1}{b(b + \beta_n)} = \dfrac{1}{b^2} \Rightarrow \lim(\dfrac{1}{y_b}) = \dfrac{1}{b} \Rightarrow \lim(\dfrac{x_n}{y_n}) = \lim(x_n \cdot \dfrac{1}{y_n}) = a \cdot \dfrac{1}{b} = \dfrac{a}{b}$\\
 
-14. \textbf{Неравенство Бернулли.}
+12. \textbf{! Бесконечные пределы. Бесконечно большие. Связь между бесконечно малыми и бесконечно большими. Аналоги теорем для бесконечных пределов.}\\
+Вспомним сначала бесконечно малые:\\
+$\{\alpha\}_{n+1}^{+\infty}$ - бесконечно малая $\Leftrightarrow \lim \alpha_n = 0$\\
+Наблюдение: $\lim x_n = a \Leftrightarrow \{x_n - a\}_{n=1}^{+\infty}$ - бесконечно малая $\Leftrightarrow x_n - a = \alpha_n \Leftrightarrow x_n = a + \alpha_n$\\
+Доказательство: $\lim x_n = a \Leftrightarrow \forall \epsilon > 0\ \exists N:\ \forall n \ge N:\ |x_n - a| < \epsilon \Rightarrow |(x_n - a) - 0| < \epsilon \Rightarrow \lim \alpha_n = 0$\\
+Свойства:
+\begin{itemize}
+    \item $\alpha_n, \beta_n$ - б/м $\Rightarrow \alpha_n + \beta_n$ - б/м\\
+    Доказательство:\\
+    $\forall \epsilon > 0\ \exists N_1:\ \forall n \ge N_1\ |\alpha_n| < \epsilon$\\
+    $\forall \epsilon > 0\ \exists N_2:\ \forall n \ge N_2\ |\beta_n| < \epsilon$\\
+    $N = \max(N_1, N_2)\ \forall n \ge N$\\
+    $|\alpha_n + \beta_n| \le |\alpha_n| + |\beta_n| < \dfrac{\epsilon}{2} + \dfrac{\epsilon}{2} = \epsilon \Rightarrow \forall \epsilon > 0\ \exists N:\ \forall n \ge N\ |\alpha_n + \beta_n| < \epsilon \Leftrightarrow \lim(\alpha_n + \beta_n) = 0 \Rightarrow \alpha_n + \beta_n$ - б/м
+    \item $\alpha_n$ - б/м; $a_n$ - ограниченная $\Rightarrow a_n \cdot \alpha_n$ - б/м\\
+    Доказательство:\\
+    $\{a_n\}$ - ограниченная $\Leftrightarrow \exists M > 0:\ |\alpha_n| < M\ \forall n \in N$\\
+    Фиксируем $\epsilon > 0 \Rightarrow \exists N:\ \forall n \ge N\ |\alpha_n| < \dfrac{\epsilon}{M}$\\
+    $|a_n\cdot\alpha_n| = |a_n| \cdot |\alpha_n| < M \cdot \dfrac{\epsilon}{M} = \epsilon \Rightarrow \alpha_n \cdot a_n$ - б/м
+    \item \begin{cases}
+        $\alpha_n, \beta_n$ - б/м\\
+        $p, q \in \mathbb{R}$
+    \end{cases} $\Rightarrow p \cdot \alpha_n + q \cdot \beta_n$ -  б/м
+    \item \begin{cases}
+        $\alpha_n, \beta_n$ - б/м\\
+        $\beta_n$ - огр.
+    \end{cases} $\Rightarrow \alpha_n \cdot \beta_n$ -  б/м
+\end{itemize}
+Бесконечно большие последовательности:\\
+Говорят, что $\lim x_n = +\infty$, если $\forall M\ \exists N:\ \forall n \ge N\ x_n > M$\\
+Другими словами $\lim x_n = +\infty$, если вне любого луча вида $[M, +\infty)$ лежит лишь конечное число элементов последовательности\\
 
-15. \textbf{! Определение экспоненты и числа e.}
+Говорят, что $\lim x_n = -\infty$, если $\forall M\ \exists N:\ \forall n \ge N\ x_n < M$\\
+Другими словами $\lim x_n = -\infty$, если вне любого луча вида $(-\infty, M]$ лежит лишь конечное число элементов последовательности\\
 
-16. \textbf{Свойства экспоненты.}
+Говорят, что $\lim x_n = \infty$, если $\forall M\ \exists N:\ \forall n \ge N\ |x_n| > M$\\
+Другими словами $\lim x_n = \infty$, если вне любого луча вида $[-M, M]$ лежит лишь конечное число элементов последовательности\\
 
-17. \textbf{Формула для экспоненты суммы (с леммой).}
+$\lim x_n = +\infty \Rightarrow \lim x_n = \infty$\\
+$\lim x_n = -\infty \Rightarrow \lim x_n = \infty$\\
 
-18. \textbf{Сравнение скорости возрастания последовательностей $n^k$, $a^n$, $n!$ и $n^n$.}
+$\{x_n\}$ - б/б, если $\lim x_n = \infty$\\
+Связь б/м и б/б:\\
+$\forall n\ x_n \ne 0$, тогда $x_n$ - б/б $\Leftrightarrow \dfrac{1}{x_n}$ - б/м\\
+Доказательство:\\
+$x_n$ - б/б $\Leftrightarrow \forall M > 0:\ \exists N:\ \forall n \ge N\ |x_n| < M (> 0) \Leftrightarrow \dfrac{1}{|x_n|} < \dfrac{1}{M}$\\
+$\dfrac{1}{M} \in [0; +\infty] = \epsilon$\\
+$\forall \epsilon\ \exists N\ \forall n \ge N:\ \dfrac{1}{x_n} < \epsilon \Rightarrow \dfrac{1}{x_n}$ - б/м\\
+
+Аналоги теорем для бесконечных пределов:
+\begin{itemize}
+    \item Предел единственный
+    \item Стабилизация знака
+    \item Предельный переход
+    \item Теорема о двух гаишниках
+\end{itemize}
+
+13. \textbf{Арифметические действия в $\overline{\mathbb{R}}$. Примеры.}\\
+$\overline{\mathbb{R}} = \mathbb{R}\cup\{-\infty\}\cup\{+\infty\}$
+
+14. \textbf{Неравенство Бернулли. Предел $\lim a^n$}:\\
+Неравенство Бернулли:\\
+$x > -1,\ n \in \mathbb{N}$\\
+$(1 + x)^n \ge 1 + nx$, причём true при $n = 1$ или $x = 0$\\
+Доказательство (по ММИ):\\
+База: при $n = 1$ очев true\\
+Переход: пусть при $n$ true, тогда $(1 + x)^{n+1} \ge (1 + nx)(1 + x) = 1 + x + nx + nx^2 = 1 + (n + 1)x + nx^2$\\
+Очев $nx^2 > 0 \Rightarrow 1 + (n + 1)x + nx^2 \ge 1 + (n + 1)x$\\
+
+Предел $\lim a^n$: $q \in \mathbb{R}$
+\begin{itemize}
+    \item $|q| > 1 \Rightarrow \lim q^n = \infty$
+    \item $|q| < 1 \Rightarrow \lim q^n = 0$
+\end{itemize}
+Доказательство: $|q| > 1 \Rightarrow |q| = 1 + x,\ x > 0$\\
+$|q^n| = (1 + x)^n \ge 1 + nx > nx$\\
+$\lim q^n = \infty$\\
+$|q| < 1 \Leftrightarrow |\dfrac{1}{q}| > 1 \Rightarrow \dfrac{1}{q^n}$ - б/б $\Leftrightarrow q^n$ - б/м\\
+$a = 0$ - очев\\
+
+15. \textbf{! Определение экспоненты и числа e.}\\
+Вывод экспоненты довольно душный, почитайте полную версию у вас в конспекте или попросите у однокрурсников. Вот краткая версия:\\
+$x_n = (1 + \dfrac{a}{n})^n$ возрастает при $n > -a$, причём строго при $a \ne 0$ ($a \in \mathbb{R}$)\\
+Доказательство:\\
+$\dfrac{x_n}{x_{n-1}} = \dfrac{(1 + \dfrac{a}{n})^n}{(1 + \dfrac{a}{n-1})^n-1} =$ ................... $\ge \dfrac{n - 1}{n - 1 + a} \cdot \dfrac{n - 1 + a}{n-1} \ge 1 \Rightarrow n > -a$ и $x_n$ возрастает\\
+
+$x_n = (1 + \dfrac{a}{n})^n$ - орг. сверху\\
+Доказательство: $y_n = (1 + \dfrac{-a}{n})^n$\\
+$x_n \cdot y_n = (1 + \dfrac{a}{n})^n \cdot (1 + \dfrac{-a}{n})^n = (1 - \dfrac{a^2}{n^2})^n \le 1$\\
+$x_n \le \dfrac{1}{y_n} \le \dfrac{1}{y_{n-1}} \le \dfrac{1}{y_{n-2}} \le ... \le \dfrac{1}{y_1}\ (n > 0)$\\
+$x_n \le \dfrac{1}{y_n} \le ... \le \dfrac{1}{y_{[a]+1}}\ (a > 0)$\\
+
+Следствие:
+\begin{enumerate}
+    \item $\{x_n\}$ - имеет предел
+    \item $z_n = (1 + \dfrac{1}{b})^n$ - убывает
+\end{enumerate}
+Доказательство: $x_n$ НСНМ возрастает, $x_n$ - огр. сверху $\Rightarrow$ теорема о пределе последовательности $\Rightarrow \exists \lim x_n \in \mathbb{R}$\\
+
+Итак, имеем:\\
+$\lin x_n = \lim(1 + \dfrac{a}{n})^n = \exp(a)$\\
+$\lim(1 + \dfrac{1}{n})^n = e = \exp(1)$
+
+16. \textbf{Свойства экспоненты.}\\
+\begin{enumerate}
+    \item $\exp(1) = e$\\
+    $\exp(0) = 1$
+    \item $a \le b \Rightarrow \exp(a) \le \exp(b)$\\
+    $(1 + \dfrac{a}{n})^n \le (1 + \dfrac{b}{n})^n$\\
+    Устремляем в $+\infty$\\
+    $\exp(a) \le \exp(b)$
+    \item $\exp(a) \ge 1 + a$\\
+    $(1 + \dfrac{a}{n})^n \ge 1 + n \cdot \dfrac{a}{n} = 1 + a$\\
+    Устремляем в $+\infty$\\
+    $\exp(a) \ge 1 + a$
+    \item $(\exp(a))(\exp(-a)) \le 1$
+    \item $\exp(a) \le \dfrac{1}{1 - a}$\\
+    $a < 1$\\
+    $\exp(a) \cdot \exp(-a) \le 1$\\
+    $\exp(a) \le \dfrac{1}{\exp(-a)}$
+    \item $\forall n\ (1 + \dfrac{1}{n})^n < \epsilon$\\
+    $\forall n\ (1 + \dfrac{1}{n})^{n+1} > \epsilon$\\
+    const $n$, $k > n + 1$\\
+    $(1 + \dfrac{1}{n})^n < (1 + \dfrac{1}{n})^{n+1} < ... < (1 + \dfrac{1}{k})^k$\\
+    Устремляем в $+\infty$\\
+    $e < e < ... < e$
+    \item $2 < e < 3$
+\end{enumerate}
+
+17. \textbf{Формула для экспоненты суммы (с леммой).}\\
+$\{a_n\}:\ \lim a_n = a$, тогда $\lim (1 + \dfrac{a_n}{n})^n = \exp(a)$\\
+Док-во: $x_n = (1 + \dfrac{a_n}{n})^n;\ y_n = (1 + \dfrac{a}{n})^n$\\
+$|x_n - y_n| = |(1 + \dfrac{a_n}{n})^n - (1 + \dfrac{a}{n})^n| = |A^n - B^n|$
+\begin{cases}
+    $A = (1 + \dfrac{a_n}{n})^n > 0,\ \exists N_1\ \forall n > N_1$\\
+    $B = (1 + \dfrac{a}{n})^n > 0,\ \exists N_2\ \forall n > N_2$
+\end{cases} $\bigcap$ \begin{cases}
+    $A < 1 + \dfrac{M}{n}$\\
+    $B < 1 + \dfrac{M}{n}$\\
+\end{cases} $\exists M > 0$
+$|A^n - B^n| = |A - B|\cdot(\sum_{i=0}^n A^{n-i}\cdot B^{i-1}) < |A - B|\cdot(\sum_{i=0}^n (1 + \dfrac{M}{n})^{n-i}\cdot (1 + \dfrac{M}{n})^{i-1} = |A - B|\cdot(\sum_{i=0}^n(1 + \dfrac{M}{n})^{n-1}) = |A - B|\cdot(1 + \dfrac{M}{n})^{n-1}\cdot n = \dfrac{|a_n - a|}{n}\cdot(1 + \dfrac{M}{N})^{n-1}\cdot n = |a_n - a|(1 + \dfrac{M}{n})^n(1 + \dfrac{M}{n})^{-1}$\\
+Устремим в бесконечность и получим: $0\cdot\exp(M)\cdot 1 \Rightarrow |a_n - a|(1 + \dfrac{M}{n})^n(1 + \dfrac{M}{n})^{-1} \longrightarrow 0 \Rightarrow \{|A^n - B^n|\} \longrightarrow 0 \Rightarrow {x_n - y_n}$ - б/м $\Rightarrow \lim x_n = \lim y_n = a$\\
+
+$(1 + \dfrac{a}{n})^n\cdot(1 + \dfrac{b}{n})^n = (1 + \dfrac{b}{n} + \dfrac{a}{n} + \dfrac{ab}{n^2}) = (1 + \dfrac{a + b + \frac{ab}{n}}{n})$\\
+Устремляем в бесконечность\\
+$\exp(a)\cdot\exp(b) = \exp(a + b)$
+
+18. \textbf{Сравнение скорости возрастания последовательностей $n^k$, $a^n$, $n!$ и $n^n$.}\\
+$n^k < a^n < n! < n^n$\\
+\begin{enumerate}
+    \item $x_n = \dfrac{n^k}{a^n},\ \forall n:\ x_n > 0$ (так как $n > 0, a > 1$)\\
+    $\lim(\dfrac{x_{n+1}}{x_n}) = \lim(\dfrac{(n+1)^ka^n}{a^{n+1}n^k}) = \lim(\dfrac{1}{a}\cdot\dfrac{(n+1)^k}{n^k}) =$ \begin{cases}
+        $x_n > 0$\\
+        $\dfrac{1}{a} < 1$
+    \end{cases} $\Rightarrow \lim(\dfrac{n^k}{a^n}) = 0 \Rightarrow n^k < a^n$
+    \item $x_n = \dfrac{a^n}{n!},\ \forall n:\ x_n > 0$ (так как $n > 0, a > 1$)\\
+    $\lim(\dfrac{x_{n+1}}{x_n}) = \lim(\dfrac{a^{n+1}n!}{a^n(n+1)!}) = \lim(a\cdot\dfrac{1}{n+1}) =$ \begin{cases}
+        $x_n > 0$\\
+        $0 < 1$
+    \end{cases} $\Rightarrow \lim(\dfrac{a^n}{n!}) = 0 \Rightarrow a^n < n!$
+    \item $x_n = \dfrac{n!}{n^n},\ \forall n:\ x_n > 0$ ($n > 0$)\\
+    $\lim(\dfrac{x_{n+1}}{x_n}) = \lim(\dfrac{(n+1)!n^n}{(n+1)^{n+1}n!}) = \lim(\dfrac{n!}{(n+1)^n}) = \lim(\dfrac{1}{(1 + \dfrac{1}{n})^n}) = $ \begin{cases}
+        $x_n > 0$\\
+        $\dfrac{1}{e} < 1$
+    \end{cases} $\Rightarrow \lim(\dfrac{n!}{n^n}) = 0 \Rightarrow n! < n^n$
+\end{enumerate}
 
 19. \textbf{Теорема Штольца (для неопределенности $\frac{\infty}{\infty}$). Сумма m-ых степеней натуральных чисел.}
 
