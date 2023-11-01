@@ -99,7 +99,7 @@ $A \subsetneq B$, то есть $A \subset B \wedge A \ne \varnothing \wedge A \
 \end{itemize}
 
 Свойства:
-\begin{enumurate}
+\begin{enumerate}
     \item Функция из $X$ в  $Y$ --- отношение ($\delta_f = X$), для которого верно:
     \[
     \left. \begin{array}{l} \left<x,y\right> \in f \\ \left<x, z\right> \in f \end{array} \right\} \Rightarrow y = z
@@ -115,7 +115,7 @@ $A \subsetneq B$, то есть $A \subset B \wedge A \ne \varnothing \wedge A \
     \item Если выполняется рефлективность, антисимметричность и транзитивность, от данное отношение --- отношение нестрогого частичного порядка. Например: $\ge$; $A \subset B$ на $2^X$.
     \item Если выполняется иррефлективность и транзитивность, то данное отношение --- отношение строгого частичного порядка. Например: $>$;  $A$ собственное подмножество  $B$ на  $2^X$.
     \item $R$ - нестрогий ч.п.  $\Rightarrow$ $R = \{\left<x,y\right> \in R: \; x \neq y\}$ --- строгий ч.п.
-\end{enumurate}
+\end{enumerate}
 
 Примеры отношений:
 \begin{itemize}
@@ -191,15 +191,15 @@ $A \subsetneq B$, то есть $A \subset B \wedge A \ne \varnothing \wedge A \
 Доказательство:\\
 Фиксируем $g$\\
 $A = \{a \in \mathbb{R}$ | $a < yn\}$\\
-$B \mathbb{R}\setminus A \Rightarrow B = \{b \in \mathbb{R}$ | $\forall n : b \ge yn\}$\\
+$B = \mathbb{R}\setminus A \Rightarrow B = \{b \in \mathbb{R}$ | $\forall n : b \ge yn\}$\\
 Пусть $B$ левее $A$ : $\forall a, b; \exists n$ : \begin{cases}
     $b \le a$
     \\
     $a < yn$
 \end{cases} $\Rightarrow b < yn ??? \Rightarrow A$ левее $B \Rightarrow \exists c$ : \begin{cases}
-    $\forall \le c$
+    $\forall a \le c$
     \\
-    $\forall \ge c$
+    $\forall b \ge c$
 \end{cases} $\Rightarrow$ \begin{cases}
     $c - y = a' \in A$
     \\
@@ -277,7 +277,7 @@ $\{x_n\}_{n=1}^{+\infty}$ - строго возрастрает, если $\fora
 $\{x_n\}_{n=1}^{+\infty}$ - убывающая, если $\forall n\ x_{n+1} \le x_n$\\
 $\{x_n\}_{n=1}^{+\infty}$ - строго убывающая, если $\forall n\ x_{n+1} < x_n$\\
 $\{x_n\}_{n=1}^{+\infty}$ - ограниченна сверху, если $\exists m \in \mathbb{R}:\ \forall n\ x_n \le m$\\
-$\{x_n\}_{n=1}^{+\infty}$ - ограниченна снизу, если $\exists m \in \mathbb{R}:\ \forall n\ x_n \ ge m$\\
+$\{x_n\}_{n=1}^{+\infty}$ - ограниченна снизу, если $\exists m \in \mathbb{R}:\ \forall n\ x_n \ge m$\\
 $\{x_n\}_{n=1}^{+\infty}$ - ограниченная, если ограниченна сверху и снизу\\
 Опеределения предела:\\
 \textit{Не classic}\\
@@ -323,7 +323,7 @@ $\forall\epsilon\ N = \max(N_1, N_2):\ \forall n > N$ \begin{cases}
 \end{cases} $\Rightarrow y_n < x_n??? \Rightarrow a \le b$
 
 9. \textbf{! Теорема о стабилизации знака и теорема о двух милиционерах. Следствия.}\\
-Теорема о стабилизации знака и теорема:\\
+Теорема о стабилизации знака:\\
 $\forall n\ x_n < y_n \Rightarrow a \le b$\\
 Следствия:\\
 $\lim x_n = a$\\
@@ -520,16 +520,16 @@ $|x_n - y_n| = |(1 + \dfrac{a_n}{n})^n - (1 + \dfrac{a}{n})^n| = |A^n - B^n|$
 \end{cases} $\bigcap$ \begin{cases}
     $A < 1 + \dfrac{M}{n}$\\
     $B < 1 + \dfrac{M}{n}$\\
-\end{cases} $\exists M > 0$
-$|A^n - B^n| = |A - B|\cdot(\sum_{i=0}^n A^{n-i}\cdot B^{i-1}) < |A - B|\cdot(\sum_{i=0}^n (1 + \dfrac{M}{n})^{n-i}\cdot (1 + \dfrac{M}{n})^{i-1} = |A - B|\cdot(\sum_{i=0}^n(1 + \dfrac{M}{n})^{n-1}) = |A - B|\cdot(1 + \dfrac{M}{n})^{n-1}\cdot n = \dfrac{|a_n - a|}{n}\cdot(1 + \dfrac{M}{N})^{n-1}\cdot n = |a_n - a|(1 + \dfrac{M}{n})^n(1 + \dfrac{M}{n})^{-1}$\\
+\end{cases} $\exists M > 0$\\
+$|A^n - B^n| = |A - B|\cdot(\sum_{i=1}^n A^{n-i}\cdot B^{i-1}) < |A - B|\cdot(\sum_{i=1}^n (1 + \dfrac{M}{n})^{n-i}\cdot (1 + \dfrac{M}{n})^{i-1} = |A - B|\cdot(\sum_{i=1}^n(1 + \dfrac{M}{n})^{n-1}) = |A - B|\cdot(1 + \dfrac{M}{n})^{n-1}\cdot n = \dfrac{|a_n - a|}{n}\cdot(1 + \dfrac{M}{N})^{n-1}\cdot n = |a_n - a|(1 + \dfrac{M}{n})^n(1 + \dfrac{M}{n})^{-1}$\\
 Устремим в бесконечность и получим: $0\cdot\exp(M)\cdot 1 \Rightarrow |a_n - a|(1 + \dfrac{M}{n})^n(1 + \dfrac{M}{n})^{-1} \longrightarrow 0 \Rightarrow \{|A^n - B^n|\} \longrightarrow 0 \Rightarrow {x_n - y_n}$ - б/м $\Rightarrow \lim x_n = \lim y_n = a$\\
 
-$(1 + \dfrac{a}{n})^n\cdot(1 + \dfrac{b}{n})^n = (1 + \dfrac{b}{n} + \dfrac{a}{n} + \dfrac{ab}{n^2}) = (1 + \dfrac{a + b + \frac{ab}{n}}{n})$\\
+$(1 + \dfrac{a}{n})^n\cdot(1 + \dfrac{b}{n})^n = (1 + \dfrac{b}{n} + \dfrac{a}{n} + \dfrac{ab}{n^2})^n = (1 + \dfrac{a + b + \frac{ab}{n}}{n})^n$\\
 Устремляем в бесконечность\\
 $\exp(a)\cdot\exp(b) = \exp(a + b)$
 
 18. \textbf{Сравнение скорости возрастания последовательностей $n^k$, $a^n$, $n!$ и $n^n$.}\\
-$n^k < a^n < n! < n^n$\\
+$n^k < a^n < n! < n^n$
 \begin{enumerate}
     \item $x_n = \dfrac{n^k}{a^n},\ \forall n:\ x_n > 0$ (так как $n > 0, a > 1$)\\
     $\lim(\dfrac{x_{n+1}}{x_n}) = \lim(\dfrac{(n+1)^ka^n}{a^{n+1}n^k}) = \lim(\dfrac{1}{a}\cdot\dfrac{(n+1)^k}{n^k}) =$ \begin{cases}
@@ -542,7 +542,7 @@ $n^k < a^n < n! < n^n$\\
         $0 < 1$
     \end{cases} $\Rightarrow \lim(\dfrac{a^n}{n!}) = 0 \Rightarrow a^n < n!$
     \item $x_n = \dfrac{n!}{n^n},\ \forall n:\ x_n > 0$ ($n > 0$)\\
-    $\lim(\dfrac{x_{n+1}}{x_n}) = \lim(\dfrac{(n+1)!n^n}{(n+1)^{n+1}n!}) = \lim(\dfrac{n!}{(n+1)^n}) = \lim(\dfrac{1}{(1 + \dfrac{1}{n})^n}) = $ \begin{cases}
+    $\lim(\dfrac{x_{n+1}}{x_n}) = \lim(\dfrac{(n+1)!n^n}{(n+1)^{n+1}n!}) = \lim(\dfrac{n^n}{(n+1)^n}) = \lim(\dfrac{1}{(1 + \dfrac{1}{n})^n}) = $ \begin{cases}
         $x_n > 0$\\
         $\dfrac{1}{e} < 1$
     \end{cases} $\Rightarrow \lim(\dfrac{n!}{n^n}) = 0 \Rightarrow n! < n^n$
