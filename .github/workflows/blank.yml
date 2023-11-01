@@ -28,7 +28,7 @@ jobs:
 
           # -jobname=<name> дает возможность поменять имя выходного файла
 
-          args: -jobname=mathColloquium -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+          args: -jobname=mathColloquium -pdf -interaction=nonstopmode
 
           compiler: latexmk
 
